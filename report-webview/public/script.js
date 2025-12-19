@@ -1147,6 +1147,10 @@ function setupCarouselInteractions(indicatorContainer) {
 document.addEventListener('DOMContentLoaded', () => {
     const headerContainer = document.querySelector('.app-header');
     const carouselContainer = document.getElementById('carousel-container');
+    const track = document.getElementById('carousel-track');
+    const indicatorContainer = document.getElementById('carousel-indicators');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
     
     // 헤더 초기화
     if (headerContainer) {
@@ -1154,14 +1158,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // 카러셀 영역에 로딩 메시지 표시 (정중앙)
-    if (carouselContainer) {
-        carouselContainer.innerHTML = `
-            <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%; padding: 20px; text-align: center; color: #888;">
-                <div>
-                    <p style="font-size: 16px; line-height: 1.6; white-space: pre-line;">결과 데이터를 기다리고 있어요.
+    // 주의: carouselContainer.innerHTML을 덮어쓰면 #carousel-track이 사라져 렌더링이 실패할 수 있음
+    const loadingCardHtml = `
+        <div class="content-card loading-card">
+            <div class="card-content-wrapper">
+                <p class="loading-text">결과 데이터를 기다리고 있어요.
 잠시만 기다려 주세요.</p>
-                </div>
             </div>
-        `;
+        </div>
+    `;
+
+    if (track) {
+        track.innerHTML = loadingCardHtml;
+    } else if (carouselContainer) {
+        // 혹시 마크업이 변경되어 track이 없다면, 최소한의 스켈레톤을 복구
+        const restoredTrack = document.createElement('div');
+        restoredTrack.className = 'carousel-track';
+        restoredTrack.id = 'carousel-track';
+        carouselContainer.innerHTML = '';
+        carouselContainer.appendChild(restoredTrack);
+        restoredTrack.innerHTML = loadingCardHtml;
     }
+
+    if (indicatorContainer) {
+        indicatorContainer.innerHTML = '';
+    }
+
+    // 초기에는 버튼 비활성화 (카드 렌더링 후 setupCarouselInteractions에서 상태가 갱신됨)
+    [prevBtn, nextBtn].forEach(btn => {
+        if (!btn) return;
+        btn.style.opacity = '0.5';
+        btn.style.pointerEvents = 'none';
+    });
 });

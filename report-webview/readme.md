@@ -1,10 +1,10 @@
-# merged-webview
+# report-webview
 
 React Native WebView에서 사용할 수 있는 정적 사주 분석 리포트 렌더러입니다.
 
 ## 개요
 
-이 프로젝트는 `merged/`를 기반으로 하되, **데이터를 웹에서 직접 로드하지 않고** React Native에서 주입받아 렌더링하는 구조로 설계되었습니다. 이를 통해 개인정보 보안을 강화하고, 운영 편의성을 높였습니다.
+이 프로젝트는 **데이터를 웹에서 직접 로드하지 않고** React Native에서 주입받아 렌더링하는 구조로 설계되었습니다. 이를 통해 개인정보 보안을 강화하고, 운영 편의성을 높였습니다.
 
 ## 주요 특징
 
@@ -13,73 +13,16 @@ React Native WebView에서 사용할 수 있는 정적 사주 분석 리포트 �
 - **정적 사이트**: 빌드 없이 배포 가능한 순수 HTML/CSS/JS
 - **원격 배포**: CDN이나 정적 호스팅에 배포하여 앱과 독립적으로 업데이트 가능
 
-## 프로젝트 구조
-
-```
-merged-webview/
-├── public/
-│   ├── index.html          # 메인 HTML 파일
-│   ├── style.css           # 스타일시트
-│   ├── script.js           # 렌더링 로직 및 RN 통신
-│   └── images/             # 이미지 자산
-│       └── 강아지/
-│           ├── 천간/
-│           ├── 지지/
-│           └── ...
-└── README.md
-```
-
 ## 배포 방법
 
 ### 정적 호스팅 옵션
 
-이 프로젝트는 정적 사이트이므로 다양한 호스팅 서비스에 배포할 수 있습니다:
+이 프로젝트는 정적 사이트이므로 다양한 호스팅 서비스에 배포할 수 있습니다. 그 중 Vercel 을 이용한 방법을 채택하였습니다.
 
-#### 1. AWS S3 + CloudFront
-```bash
-# S3 버킷에 업로드
-aws s3 sync public/ s3://your-bucket-name/ --delete
-
-# CloudFront 배포 (선택)
-# CloudFront 콘솔에서 배포 생성
-```
-
-#### 2. Vercel
+#### Vercel
 ```bash
 # Vercel CLI 설치 후
 vercel --prod
-```
-
-#### 3. Netlify
-```bash
-# Netlify CLI 설치 후
-netlify deploy --prod --dir=public
-```
-
-#### 4. GitHub Pages
-```bash
-# public 폴더를 gh-pages 브랜치로 푸시
-git subtree push --prefix public origin gh-pages
-```
-
-#### 5. Nginx
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-    root /path/to/merged-webview/public;
-    index index.html;
-    
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-    
-    # 캐시 설정 (정적 자산)
-    location ~* \.(css|js|png|jpg|jpeg|gif|svg)$ {
-        expires 1y;
-        add_header Cache-Control "public, immutable";
-    }
-}
 ```
 
 ### 캐시 권장사항

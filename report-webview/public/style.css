@@ -367,6 +367,20 @@ body {
     transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
 }
 
+/* --- Loading Card (Waiting for Data) --- */
+.loading-card .card-content-wrapper {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+    color: #888;
+}
+
 /* --- Card Internal Layout --- */
 .card-content-wrapper {
     padding: var(--inner-padding);
