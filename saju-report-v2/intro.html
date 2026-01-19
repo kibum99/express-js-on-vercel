@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 리포트 - 도입부</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
+</head>
+<body>
+    <div id="app" class="pb-12">
+        <div class="safe-area">
+            <!-- Header Section -->
+            <div class="flex flex-col items-center mt-8">
+                <img id="pet-profile" src="https://via.placeholder.com/80x80" alt="Pet" class="w-20 h-20 rounded-full border-2 border-gray-200 shadow-sm">
+                <div class="mt-4 text-center">
+                    <p id="welcome-title" class="text-lg font-bold">안녕하세요.</p>
+                    <p id="welcome-msg" class="text-sm text-gray-600 mt-1">...의 사주을 분석했습니다.</p>
+                </div>
+            </div>
+
+            <hr class="my-8 border-gray-100">
+
+            <!-- Manse-ryeok Section (Pet) -->
+            <div class="mb-10">
+                <div class="text-center mb-4">
+                    <h3 id="pet-saju-title" class="font-bold text-lg">&lt;<span class="pet-name">...</span>의 만세력&gt;</h3>
+                    <p id="pet-persona-info" class="text-[11px] text-gray-400 mt-1"></p>
+                </div>
+                <div id="pet-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl">
+                    <!-- Saju cells will be injected here -->
+                </div>
+            </div>
+
+            <!-- Manse-ryeok Section (Owner) -->
+            <div class="mb-10">
+                <div class="text-center mb-4">
+                    <h3 id="owner-saju-title" class="font-bold text-lg">&lt;<span class="owner-name">...</span>의 만세력&gt;</h3>
+                    <p id="owner-persona-info" class="text-[11px] text-gray-400 mt-1"></p>
+                </div>
+                <div id="owner-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl">
+                    <!-- Saju cells will be injected here -->
+                </div>
+            </div>
+
+            <!-- Description Section (Toggles) -->
+            <div class="mb-12">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <h3 class="font-bold text-lg text-gray-800">리포트에서 확인 가능한 내용</h3>
+                    <button id="toggle-all-btn" class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">
+                        모두 펼치기
+                    </button>
+                </div>
+                <div id="chapter-toggles" class="space-y-3">
+                    <!-- Chapter toggles will be injected here -->
+                </div>
+            </div>
+
+            <!-- 공통 스크롤 푸터 홀더 -->
+            <div id="common-scroll-footer"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/intro.js"></script>
+</body>
+</html>

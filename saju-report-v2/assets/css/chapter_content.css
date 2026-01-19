@@ -1,0 +1,27 @@
+/* assets/css/chapter_content.css */
+.content-paragraph {
+    line-height: 1.8;
+    color: #374151;
+    font-size: 16px;
+}
+
+.content-paragraph p {
+    margin-bottom: 1.5rem; /* 문단 사이 간격 */
+    text-indent: 1rem;     /* 문단 첫 글자 들여쓰기 */
+}
+
+.content-paragraph p:last-child {
+    margin-bottom: 0;
+}
+
+.content-paragraph b {
+    color: #ef4444;
+}
+
+#score-pointer {
+    width: 2px;
+}
+
+#score-dot {
+    transform: translate(-50%, -50%);
+}

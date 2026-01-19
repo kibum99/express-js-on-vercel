@@ -1,0 +1,281 @@
+{
+  "main": {
+    "title_template": "${petName}의 사주운명<br>구석구석 살펴보기",
+    "scroll_hint": "밑으로 스크롤하여<br>사주 리포트 보기"
+  },
+  "intro": {
+    "welcome_title": "안녕하세요",
+    "welcome_msg_template": "${petName}와 ${ownerName}의 사주를 분석했어요.\n두 분의 타고난 기운이 서로에게 어떤 영향을 주는지,\n그리고 함께할 때 어떤 시너지가 발생하는지 궁금하지 않으신가요?\n\n이번 리포트에서는 ${petName}의 타고난 성품부터\n두 분의 특별한 인연까지\n아주 깊이 있게 다루어 보았어요.\n서로를 더 깊이 이해하고 아껴주는\n소중한 시간이 되시길 바래요.\n\n지금부터 두 분만을 위한\n신비로운 사주 이야기를 시작할게요~",
+    "pet_saju_title_template": "먼저 우리 <span class=\"highlight\">${petName}</span>의 만세력은...",
+    "owner_saju_title_template": "다음으로 <span class=\"highlight\">${ownerName}</span>님의 만세력은...",
+    "messages": [
+      "두 분의 기운은 서로 보완하는 관계입니다.",
+      "함께 있을 때 더 큰 시너지가 발생합니다.",
+      "서로의 성향을 이해하는 것이 중요합니다."
+    ],
+    "next_btn": "이제 시작해볼까요?"
+  },
+  "chapters": [
+    {
+      "id": 0,
+      "title": "가족운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=family",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=family-teller",
+      "chapter_overview": "${petName}와(과) 보호자님 사이의 특별한 인연과 서로가 서로에게 어떤 의미인지를 사주로 분석해 드립니다.",
+      "questionTemplate": "나는 ${petName}에게<br>어떤 존재일까?<br>부족한 것은 없을까?",
+      "desc_queries": [
+        { "query_id": 1, "template": "나는 ${petName}에게 <span class=\"highlight\">어떤 존재</span>일까?" },
+        { "query_id": 2, "template": "${petName}가 나에게 <span class=\"highlight\">바라는 점</span>은 무엇일까?" },
+        { "query_id": 3, "template": "우리가 더 행복한 가족이 되려면 <span class=\"highlight\">무엇이 필요</span>할까?" },
+        { "query_id": 4, "template": "${petName}와 나 사이의 <span class=\"highlight\">특별한 인연</span>의 끈은?" },
+        { "query_id": 5, "template": "가족으로서 함께 <span class=\"highlight\">조심해야 할 부분</span>은?" }
+      ],
+      "analysis_elements": [
+        "반려인의 일간(日干)과 ${petName}의 월지(月支) 관계",
+        "서로의 오행(五行) 합충(合沖) 분석",
+        "조후(調候)를 통한 정서적 안정감 확인"
+      ],
+      "faqs": [
+        {
+          "question": "반려동물과의 관계를 사람처럼 부모-자식 관계로 봐도 되나요?",
+          "answer": "사주에서는 인성(印星)을 부모로 보지만, 반려동물과는 정서적 유대를 뜻하는 식상(食傷)이나 서로 보완하는 관계성도 함께 살펴봅니다. 단순히 부모 관계를 넘어선 특별한 인연의 조화를 분석해 드려요."
+        },
+        {
+          "question": "${petName}가 저를 진짜 가족으로 생각하는지 사주로 알 수 있나요?",
+          "answer": "네, ${petName}의 사주에 나타난 관성(官星)이나 인성의 배치를 통해 보호자님을 '의지처'로 보는지, '친구'로 보는지 그 깊은 속마음을 엿볼 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "성격운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=personality",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=personality-teller",
+      "chapter_overview": "${petName}가(이) 타고난 본질적인 성향과 세상을 바라보는 방식을 오행과 십성을 통해 깊이 있게 들여다봅니다.",
+      "questionTemplate": "${petName}(은)는 다른 친구들과<br>어떻게 지낼까?<br>사회성이 좋을까?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}의 <span class=\"highlight\">타고난 성격</span>은 어떨까?" },
+        { "query_id": 2, "template": "<span class=\"highlight\">다른 친구들</span>과는 어떻게 어울릴까?" },
+        { "query_id": 3, "template": "${petName}가 가장 좋아하는 <span class=\"highlight\">소통 방식</span>은?" },
+        { "query_id": 4, "template": "스트레스를 받을 때 나타나는 <span class=\"highlight\">성격적 특징</span>은?" },
+        { "query_id": 5, "template": "${petName}의 <span class=\"highlight\">자존감</span>을 높여주는 방법은?" }
+      ],
+      "analysis_elements": [
+        "${petName}의 일간(日干) 기질 분석",
+        "사주 내의 비겁(比劫)과 식상(食傷)의 세력",
+        "십이운성(十二運星)을 통한 성격의 강약"
+      ],
+      "faqs": [
+        {
+          "question": "사람 성격 테스트처럼 반려동물도 사주로 성격이 딱 나오나요?",
+          "answer": "그럼요! 타고난 오행의 기운을 통해 내향적인지, 외향적인지, 혹은 질투가 많은지 등 ${petName}만의 독특한 개성을 아주 상세하게 파악할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "행동운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=behavior",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=behavior-teller",
+      "chapter_overview": "${petName}의 에너지가 어떻게 표출되는지, 그리고 특정 행동 뒤에 숨겨진 타고난 기질적 이유를 분석합니다.",
+      "questionTemplate": "${petName}의 타고난 체력은<br>어느 정도일까?<br>주의할 점은?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}의 <span class=\"highlight\">활동량</span>은 어느 정도가 적당할까?" },
+        { "query_id": 2, "template": "스트레스를 받았을 때 <span class=\"highlight\">어떤 행동</span>을 할까?" },
+        { "query_id": 3, "template": "일상에서 <span class=\"highlight\">주의 깊게 살펴봐야 할 행동</span>은?" },
+        { "query_id": 4, "template": "${petName}에게 가장 효과적인 <span class=\"highlight\">산책이나 운동 방식</span>은?" },
+        { "query_id": 5, "template": "<span class=\"highlight\">행동 교정</span>이 필요할 때 주의해야 할 점은?" }
+      ],
+      "analysis_elements": [
+        "사주 내 목(木)과 화(火)의 기운(에너지 레벨)",
+        "신살(神殺) 중 역마살이나 지살의 유무",
+        "일지(日支)의 충과 합에 따른 행동 변화"
+      ],
+      "faqs": [
+        {
+          "question": "갑자기 이상한 행동을 하는 것도 사주에 나오나요?",
+          "answer": "특정 시기의 운(運) 흐름에 따라 예민해지거나 에너지가 넘칠 수 있습니다. ${petName}의 타고난 기질과 현재 운을 비교하여 행동의 이유를 분석해 드립니다."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "궁합운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=harmony",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=harmony-teller",
+      "chapter_overview": "두 분의 사주 에너지가 만나서 만드는 시너지는 무엇인지, 조화로운 공존을 위한 핵심 포인트를 짚어드립니다.",
+      "questionTemplate": "두 분의 궁합은<br>어떨까요?<br>서로에게 어떤 영향을 줄까요?",
+      "desc_queries": [
+        { "query_id": 1, "template": "두 분의 에너지는 어떻게 <span class=\"highlight\">조화</span>를 이룰까?" },
+        { "query_id": 2, "template": "함께 있을 때 서로에게 어떤 <span class=\"highlight\">행운</span>을 줄까?" },
+        { "query_id": 3, "template": "서로의 부족한 기운을 어떻게 <span class=\"highlight\">채워줄 수</span> 있을까?" },
+        { "query_id": 4, "template": "갈등이 생겼을 때 가장 현명한 <span class=\"highlight\">화해 방법</span>은?" },
+        { "query_id": 5, "template": "서로의 궁합을 더 좋게 만드는 <span class=\"highlight\">풍수적 팁</span>은?" }
+      ],
+      "analysis_elements": [
+        "반려인과 ${petName}의 일간(日干) 합충",
+        "서로에게 필요한 오행(用神)의 상생 관계",
+        "서로의 띠(年支)를 통한 기본적인 유대감"
+      ],
+      "faqs": [
+        {
+          "question": "반려동물과 저의 궁합이 안 좋으면 어떡하죠?",
+          "answer": "완벽한 궁합보다는 서로 부족한 점을 어떻게 채워주느냐가 더 중요합니다. 사주 분석을 통해 서로의 기운을 조화롭게 다스리는 방법을 알려드릴게요."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "학업운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=education",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=education-teller",
+      "chapter_overview": "${petName}의 인지적 수용력과 학습 태도를 분석하여, 가장 효과적으로 소통하고 교육하는 방법을 찾아봅니다.",
+      "questionTemplate": "${petName}의 학습 능력과<br>재능은 어느 정도일까요?<br>어떻게 키워주면 좋을까요?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}는 어떤 분야에 <span class=\"highlight\">천재성</span>을 보일까?" },
+        { "query_id": 2, "template": "훈련이나 교육을 할 때 가장 <span class=\"highlight\">효과적인 방법</span>은?" },
+        { "query_id": 3, "template": "${petName}가 배우는 것을 <span class=\"highlight\">즐거워하게</span> 하려면?" },
+        { "query_id": 4, "template": "집중력이 떨어질 때 <span class=\"highlight\">다시 높여주는</span> 방법은?" },
+        { "query_id": 5, "template": "타고난 지능을 일상에서 어떻게 <span class=\"highlight\">활용</span>하면 좋을까?" }
+      ],
+      "analysis_elements": [
+        "사주 내 인성(印星)의 발달 정도(수용력)",
+        "식상(食傷)의 표출 방식(표현력 및 학습 태도)",
+        "문창귀인 등 지적 능력 관련 신살"
+      ],
+      "faqs": [
+        {
+          "question": "말을 잘 안 듣는 것도 머리가 나빠서 그런 건가요?",
+          "answer": "아니요! 머리가 나쁜 게 아니라 사주상 고집이 강하거나 자기주장이 뚜렷한 시기일 수 있습니다. ${petName}의 학습 스타일을 알면 훈련이 훨씬 쉬워집니다."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "직업운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=job",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=job-teller",
+      "chapter_overview": "${petName}가(이) 사회적 관계 속에서 가장 빛날 수 있는 역할과 타고난 재능이 발휘되는 분야를 제안합니다.",
+      "questionTemplate": "${petName}와 잘 어울리는<br>역할은 무엇일까요?<br>어떤 분야에서 빛날까요?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}의 기질에 꼭 맞는 <span class=\"highlight\">역할</span>은 무엇일까?" },
+        { "query_id": 2, "template": "사회적으로 활동한다면 어떤 <span class=\"highlight\">모습</span>이 어울릴까?" },
+        { "query_id": 3, "template": "${petName}가 <span class=\"highlight\">성취감</span>을 느낄 수 있는 활동은?" },
+        { "query_id": 4, "template": "다른 사람들에게 어떤 <span class=\"highlight\">인상</span>을 주는 타입일까?" },
+        { "query_id": 5, "template": "미래에 ${petName}와 함께 <span class=\"highlight\">도전</span>해볼 만한 활동은?" }
+      ],
+      "analysis_elements": [
+        "사주 내 관성(官星)의 흐름(사회적 역할)",
+        "재성(財星)의 유무에 따른 실리적 성향",
+        "월지(月支)를 통한 타고난 재능 발휘 분야"
+      ],
+      "faqs": [
+        {
+          "question": "우리 아이에게 딱 맞는 '직업'이 진짜 있나요?",
+          "answer": "실제 직업을 갖는 건 아니지만, 모델견이 어울리는지, 집을 지키는 가디언이 어울리는지 등 ${petName}가 가장 행복해할 역할을 찾아낼 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "재물운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=money",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=money-teller",
+      "chapter_overview": "${petName}와(과) 함께함으로써 보호자님의 삶에 찾아오는 풍요로움과 경제적 시너지를 분석합니다.",
+      "questionTemplate": "${petName}와 함께하면<br>재물운이 좋아질까요?<br>풍요로운 삶을 살 수 있을까요?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}가 우리 집에 어떤 <span class=\"highlight\">금전운</span>을 가져올까?" },
+        { "query_id": 2, "template": "함께 풍요로운 삶을 살기 위한 <span class=\"highlight\">팁</span>은?" },
+        { "query_id": 3, "template": "${petName}와 함께할 때 시너지가 나는 <span class=\"highlight\">경제적 기운</span>은?" },
+        { "query_id": 4, "template": "재물운을 높여주는 ${petName}의 <span class=\"highlight\">전용 아이템</span>은?" },
+        { "query_id": 5, "template": "경제적 안정을 위해 반려인이 실천해야 할 <span class=\"highlight\">작은 습관</span>은?" }
+      ],
+      "analysis_elements": [
+        "반려인의 재성(財星)과 ${petName}의 기운 합치",
+        "${petName}가 가진 재물 창고(財庫)의 유무",
+        "서로의 사주가 금전적 기회(복록)를 만드는지 확인"
+      ],
+      "faqs": [
+        {
+          "question": "반려동물이 정말 '복덩이'가 될 수 있나요?",
+          "answer": "네, 반려동물의 기운이 보호자님의 부족한 재물운을 보완해주거나 운의 흐름을 틔워주는 '복의 근원'이 되는 경우가 사주상으로 분명히 존재합니다."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "건강운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=health",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=health-teller",
+      "chapter_overview": "타고난 체질적 강점과 약점을 파악하여, ${petName}와(과) 오랫동안 건강하게 함께하기 위한 맞춤 가이드를 드립니다.",
+      "questionTemplate": "${petName}의 건강을 위해<br>주의해야 할 점은 무엇일까요?<br>활기찬 일상을 보내려면?",
+      "desc_queries": [
+        { "query_id": 1, "template": "${petName}가 타고난 <span class=\"highlight\">체질과 주의해야 할 부분</span>은?" },
+        { "query_id": 2, "template": "활기찬 일상을 위해 꼭 챙겨야 할 <span class=\"highlight\">건강 포인트</span>은?" },
+        { "query_id": 3, "template": "노년기까지 건강하게 지내기 위한 <span class=\"highlight\">비결</span>은?" },
+        { "query_id": 4, "template": "계절별로 특히 주의해야 할 <span class=\"highlight\">질환</span>은?" },
+        { "query_id": 5, "template": "스트레스가 건강에 미치는 <span class=\"highlight\">영향과 관리법</span>은?" }
+      ],
+      "analysis_elements": [
+        "사주 오행의 균형(신체 장기별 강약)",
+        "금(金)과 수(水)의 기운을 통한 면역력 분석",
+        "백호살, 괴강살 등 급격한 건강 변화 가능성"
+      ],
+      "faqs": [
+        {
+          "question": "병원 검진 외에 사주로 건강을 보는 게 의미가 있나요?",
+          "answer": "사주는 타고난 체질적 약점을 미리 알려줍니다. 예를 들어 '물(水)' 기운이 부족하면 신장이나 비뇨기계를 미리 관리하는 식의 맞춤 예방 가이드를 드려요."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "시기운",
+      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=timing",
+      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=timing-teller",
+      "chapter_overview": "현재 흐르는 운의 기운을 읽어, 지금 이 순간 ${petName}에게 가장 필요한 변화와 기회가 무엇인지 알려드립니다.",
+      "questionTemplate": "지금은 어떤 시기일까요?<br>${petName}와 어떤 변화를<br>준비해야 할까요?",
+      "desc_queries": [
+        { "query_id": 1, "template": "지금 이 시기에 <span class=\"highlight\">가장 집중</span>해야 할 것은?" },
+        { "query_id": 2, "template": "${petName}의 삶에서 현재 <span class=\"highlight\">어떤 변화</span>가 일어나고 있을까?" },
+        { "query_id": 3, "template": "앞으로 다가올 <span class=\"highlight\">중요한 기회</span>와 운의 흐름은?" },
+        { "query_id": 4, "template": "중요한 결정을 내리기에 좋은 <span class=\"highlight\">타이밍</span>은 언제일까?" },
+        { "query_id": 5, "template": "현재의 운을 긍정적으로 바꾸기 위한 <span class=\"highlight\">행동</span>은?" }
+      ],
+      "analysis_elements": [
+        "현재 대운(大運)과 세운(歲運)의 흐름",
+        "올해의 천간/지지와 ${petName} 사주의 상생상극",
+        "특정 월별 기운 변화(월운)"
+      ],
+      "faqs": [
+        {
+          "question": "지금이 이사나 입양 같은 큰 변화를 주기에 좋을 때인가요?",
+          "answer": "운의 흐름이 불안정한 시기에는 안정을 취하는 게 좋고, 상승기에는 새로운 변화가 큰 복이 됩니다. 현재 ${petName}에게 가장 유리한 타이밍을 집어드릴게요."
+        }
+      ]
+    }
+  ],
+  "chapter_desc": {
+    "title_template": "이번 챕터는 <span id=\"chapter-name\" class=\"text-red-500\">${chapterTitle}</span> 이에요.",
+    "keywords_suffix": "의 궁금증들이 말끔히 해결돼요.",
+    "analysis_title": "이런 사주 요소를 살펴요",
+    "faq_title": "그런데...<br>사람들에게 적용되는 사주분석이<br>우리 ${petName}에게 보면서,<br><span class=\"highlight\">이런게 궁금하지는 않으셨나요?</span>",
+    "footer_msg": "자 그럼 이제 보러 가볼까요?",
+    "scroll_hint": "분석 리포트 보러가기"
+  },
+  "chapter_content": {
+    "score_label": "나의 점수",
+    "score_avg_hint": "전체 평균 대비 상위 <span class=\"highlight\">${percentage}</span> 수준입니다.",
+    "detailed_report_title": "상세 분석 내용",
+    "lucky_tip_title": "Lucky Tip!",
+    "next_chapter_btn": "다음 챕터 보기",
+    "prev_btn": "이전",
+    "last_chapter_btn": "전체 리포트 다시보기",
+    "toggle_report_open": "상세 분석 보고서 보기",
+    "toggle_report_close": "상세 분석 보고서 접기"
+  },
+  "ui_labels": {
+    "prev_btn": "이전",
+    "next_btn": "다음"
+  }
+}

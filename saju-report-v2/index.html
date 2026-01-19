@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 리포트 - 전체 리포트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
+    <link rel="stylesheet" href="assets/css/chapter_start.css">
+    <link rel="stylesheet" href="assets/css/chapter_desc.css">
+    <link rel="stylesheet" href="assets/css/chapter_content.css">
+    <style>
+        /* Single Page 통합을 위한 최소한의 추가 스타일 */
+        body {
+            background-color: #f3f4f6;
+        }
+        .report-section {
+            position: relative;
+            width: 100%;
+        }
+        /* 챕터 컨테이너 사이의 간격 (옵션) */
+        .chapter-container {
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="mx-auto">
+        <!-- Main Section -->
+        <section id="section-main" class="report-section"></section>
+
+        <!-- Intro Section -->
+        <section id="section-intro" class="report-section"></section>
+
+        <!-- Chapters Container -->
+        <div id="chapters-container">
+            <!-- Chapters will be injected here -->
+        </div>
+
+        <footer class="py-16 text-center bg-white border-t border-gray-100">
+            <p class="text-gray-400 text-sm">© 2026 사주 리포트. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/total_report.js"></script>
+</body>
+</html>

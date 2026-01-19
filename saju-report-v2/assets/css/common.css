@@ -1,0 +1,146 @@
+/* assets/css/common.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+#app {
+    width: 100%;
+    max-width: 480px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    /* 배경 데코레이션: 더욱 은은하고 고급스러운 톤 */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 241, 242, 0.4) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(243, 244, 246, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(255, 241, 242, 0.4) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(243, 244, 246, 0.3) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* 스크롤바 숨기기 (깔끔한 UI를 위해) */
+#app::-webkit-scrollbar {
+    display: none;
+}
+#app {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.safe-area {
+    padding: 20px;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Highlight effect */
+.highlight {
+    background: linear-gradient(to top, rgba(239, 68, 68, 0.2) 45%, transparent 45%);
+    font-weight: 800;
+    padding: 0 4px;
+    border-radius: 2px;
+}
+
+/* Glassmorphism utility */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 
+        0 12px 40px -12px rgba(0, 0, 0, 0.12),
+        0 2px 8px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Glassmorphism with specific hues - subtle versions */
+.glass-card-pink {
+    background: rgba(255, 253, 253, 0.85) !important;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 
+        0 12px 40px -12px rgba(190, 24, 93, 0.1),
+        0 2px 8px -2px rgba(190, 24, 93, 0.05);
+}
+
+.glass-card-gray {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 
+        0 12px 40px -12px rgba(0, 0, 0, 0.12),
+        0 2px 8px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 공통 스크롤 푸터 스타일 */
+.common-scroll-footer-content {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.scroll-action-trigger {
+    transition: transform 0.2s ease;
+}
+
+.scroll-action-trigger:active {
+    transform: scale(0.9);
+}
+
+.footer-message {
+    color: #1f2937; /* gray-800 */
+}
+
+.scroll-hint {
+    letter-spacing: 0.15em;
+}
+
+/* FAQ 질문 옵션 버튼 공통 스타일 */
+.faq-question-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.faq-question-btn:hover {
+    background-color: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+.faq-question-btn:active {
+    transform: scale(0.98);
+}
+
+.faq-question-btn.completed {
+    opacity: 0.5;
+    pointer-events: none;
+    background-color: #f9fafb;
+}

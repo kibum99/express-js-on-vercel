@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 리포트 - 첫화면</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div id="app" class="flex flex-col items-center justify-between py-12 px-6 overflow-hidden">
+        <div class="text-center fade-in">
+            <h1 id="main-title" class="text-2xl font-bold leading-tight">
+                <span id="pet-name">...</span>의 사주운명<br>구석구석 살펴보기
+            </h1>
+            <div class="mt-4 flex justify-center">
+                <div class="w-12 h-1 bg-black rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center fade-in delay-200">
+            <!-- Placeholder for Dog Image -->
+            <div id="pet-image-container" class="relative">
+                <img id="pet-image" src="https://via.placeholder.com/300x300?text=Pet+Image" alt="Pet" class="w-64 h-64 object-cover rounded-full shadow-lg border-4 border-white">
+                <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center text-2xl">🔍</div>
+            </div>
+        </div>
+
+        <!-- 공통 스크롤 푸터 홀더 -->
+        <div id="common-scroll-footer" class="w-full"></div>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

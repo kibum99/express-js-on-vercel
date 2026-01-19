@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주 리포트 - 챕터 시작</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/chapter_start.css">
+</head>
+<body>
+    <div id="app" class="flex flex-col">
+        <!-- Sticky Tabs -->
+        <div class="chapter-tabs flex border-b bg-white sticky top-0 z-10">
+            <!-- Tabs will be injected by common.js -->
+        </div>
+
+        <div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden bg-white">
+            <!-- Background Elements (Explicit z-index to be above bg but below content) -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="bg-orb orb-1"></div>
+                <div class="bg-orb orb-2"></div>
+                <div class="bg-orb orb-3"></div>
+            </div>
+
+            <div class="fade-in flex flex-col items-center relative z-10">
+                <div id="chapter-title-container" class="flex flex-col items-center mb-12 relative z-10">
+                    <span id="chapter-number" class="text-lg font-bold text-red-400 mb-4 uppercase tracking-[0.3em] reveal-text"></span>
+                    <span id="chapter-title" class="text-5xl font-black text-gray-900 reveal-text" style="animation-delay: 0.1s;"></span>
+                </div>
+
+                <!-- Teller Icon Area -->
+                <div class="relative mb-12 z-10 reveal-text" style="animation-delay: 0.3s;">
+                    <div class="w-48 h-48 rounded-full bg-white shadow-xl flex items-center justify-center overflow-hidden border-4 border-red-100">
+                        <img id="teller-icon" src="" alt="Chapter Teller" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <p id="chapter-question" class="text-2xl font-medium leading-relaxed text-gray-700 z-10 reveal-text" style="animation-delay: 0.5s;">
+                </p>
+            </div>
+        </div>
+
+        <div class="p-8 text-center">
+            <button id="next-btn" class="w-full py-4 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-colors">
+            </button>
+        </div>
+    </div>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/chapter_start.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* assets/css/chapter_start.css */
+
+/* Background Orbs - 다채로운 색상과 명확한 움직임 적용 */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    opacity: 0.6;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* 1. 붉은 계열 (상단 좌측) */
+.orb-1 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, rgba(239, 68, 68, 0) 75%);
+    top: -20px;
+    left: -40px;
+    animation: floatRed 10s infinite alternate ease-in-out;
+}
+
+/* 2. 주황 계열 (하단 우측) */
+.orb-2 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.45) 0%, rgba(249, 115, 22, 0) 75%);
+    bottom: -40px;
+    right: -50px;
+    animation: floatOrange 14s infinite alternate ease-in-out;
+}
+
+/* 3. 분홍 계열 (중앙 우측) */
+.orb-3 {
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, rgba(236, 72, 153, 0) 75%);
+    top: 30%;
+    right: -20px;
+    animation: floatPink 12s infinite alternate ease-in-out;
+}
+
+/* 애니메이션 궤적을 더 크게 키워 움직임이 확실히 보이게 함 */
+@keyframes floatRed {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    100% { transform: translate(60px, 80px) rotate(15deg) scale(1.2); }
+}
+
+@keyframes floatOrange {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1.1); }
+    100% { transform: translate(-80px, -60px) rotate(-20deg) scale(0.9); }
+}
+
+@keyframes floatPink {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-40px, 50px) scale(1.15); }
+}
+
+/* Text Reveal Animation */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealText 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealText {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Teller Icon Styling */
+#teller-icon {
+    transition: transform 0.5s ease;
+}

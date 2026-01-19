@@ -1,0 +1,23 @@
+/* assets/css/main.css */
+.delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+#pet-image-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border: 1px dashed #ccc;
+    border-radius: 50%;
+    z-index: -1;
+}
