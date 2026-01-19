@@ -28,23 +28,27 @@
 </head>
 <body>
     <div id="app" class="mx-auto">
+        <!-- Global Chapter Tabs (Sticky Header) -->
+        <div id="global-chapter-tabs" class="chapter-tabs-global border-b bg-white sticky top-0 z-50"></div>
+
         <!-- Main Section -->
         <section id="section-main" class="report-section"></section>
 
         <!-- Intro Section -->
-        <section id="section-intro" class="report-section"></section>
+        <section id="section-intro" class="report-section hidden"></section>
 
         <!-- Chapters Container -->
-        <div id="chapters-container">
+        <div id="chapters-container" class="hidden">
             <!-- Chapters will be injected here -->
         </div>
 
-        <footer class="py-16 text-center bg-white border-t border-gray-100">
+        <footer class="py-16 text-center bg-white border-t border-gray-100 hidden">
             <p class="text-gray-400 text-sm">© 2026 사주 리포트. All rights reserved.</p>
         </footer>
     </div>
 
     <script src="assets/js/common.js"></script>
-    <script src="assets/js/total_report.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>

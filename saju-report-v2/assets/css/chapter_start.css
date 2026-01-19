@@ -75,3 +75,36 @@
 #teller-icon {
     transition: transform 0.5s ease;
 }
+
+/* Chapter Tabs Animation */
+.chapter-tabs-global {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#app.tabs-visible .chapter-tabs-global {
+    opacity: 1;
+    visibility: visible;
+}
+
+.chapter-tab-item {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #9ca3af;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chapter-tab-item.active {
+    color: #ef4444;
+    border-bottom-color: #ef4444;
+}

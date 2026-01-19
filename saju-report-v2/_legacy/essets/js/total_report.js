@@ -76,8 +76,9 @@ function renderMainSection(data, staticData, petName) {
     const petPersona = data.persona.find(p => p.type === 'pet');
     const petImage = petPersona && petPersona.profile_image ? petPersona.profile_image : 'https://via.placeholder.com/300x300?text=Pet+Image';
 
+    // Standardized padding: px-5 (20px)
     container.innerHTML = `
-        <div class="flex flex-col items-center justify-between py-12 px-6 overflow-hidden min-h-screen">
+        <div class="flex flex-col items-center justify-between py-12 px-5 overflow-hidden min-h-screen">
             <div class="text-center fade-in">
                 <h1 id="main-title" class="text-2xl font-bold leading-tight">
                     ${interpolateTemplate(staticData.main.title_template, { petName })}
@@ -113,6 +114,7 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
     container.className = 'report-section pb-12';
     const formatPersonaInfo = (persona) => `${persona.birth} (${persona.solar_lunar}) / ${persona.gender}`;
     
+    // safe-area (20px) is used. Grids and titles align with 20px.
     container.innerHTML = `
         <div class="safe-area">
             <div class="flex flex-col items-center mt-8">
@@ -144,7 +146,7 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
             </div>
 
             <div class="mb-12">
-                <div class="flex justify-between items-center mb-4 px-2">
+                <div class="flex justify-between items-center mb-4 px-0">
                     <h3 class="font-bold text-lg text-gray-800">리포트에서 확인 가능한 내용</h3>
                     <button id="toggle-all-btn" class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">
                         모두 접기
@@ -185,7 +187,7 @@ function renderChapterTogglesInIntro(chapters, params) {
                     <span class="toggle-title">${chapter.title}</span>
                 </div>
                 <svg class="toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="19 9l-7 7-7-7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
             <div class="toggle-content">
@@ -207,10 +209,11 @@ function renderChapterTogglesInIntro(chapters, params) {
 
 function renderChapterStartSection(idx, data, staticData, petName, container) {
     const staticChapter = staticData.chapters[idx];
+    // Standardized padding: px-5 (20px) instead of p-8
     container.innerHTML = `
         <div class="flex flex-col">
             ${getTabsHTML(idx, staticData.chapters)}
-            <div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative overflow-hidden bg-white">
+            <div class="flex-1 flex flex-col items-center justify-center px-5 py-12 text-center relative overflow-hidden bg-white">
                 <div class="absolute inset-0 pointer-events-none z-0">
                     <div class="bg-orb orb-1"></div>
                     <div class="bg-orb orb-2"></div>
@@ -231,7 +234,7 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
                     </p>
                 </div>
             </div>
-            <div class="p-8 text-center bg-white">
+            <div class="px-5 py-8 text-center bg-white">
                 <button class="w-full py-4 bg-black text-white rounded-xl font-bold text-lg hover:bg-gray-800 transition-colors">
                     ${staticData.chapter_content.next_btn || '알아보기'}
                 </button>
@@ -242,66 +245,66 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
 
 function renderChapterDescSection(idx, data, staticData, petName, petProfileImg, container) {
     const staticChapter = staticData.chapters[idx];
+    // Removed safe-area from outer div to control padding precisely
+    // Using px-5 (20px) to match other sections
     container.innerHTML = `
-        <div class="flex flex-col">
+        <div class="flex flex-col bg-gray-50/30">
             ${getTabsHTML(idx, staticData.chapters)}
-            <div class="safe-area bg-gray-50/30">
-                <div class="hero-section flex flex-col items-center pt-12 pb-14 px-6 bg-white border-b border-gray-50">
-                    <div class="relative mb-8">
-                        <img src="${staticChapter.teller_icon}" alt="Teller" class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50">
-                        <div class="absolute -bottom-2 -right-2 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full shadow-md tracking-wider">TELLER</div>
-                    </div>
-                    <h3 class="text-2xl font-black text-center leading-tight">
-                        이번 챕터는<br><span class="text-red-500">${staticChapter.title}</span> 이에요
-                    </h3>
+            <div class="hero-section flex flex-col items-center pt-12 pb-14 px-5 bg-white border-b border-gray-50">
+                <div class="relative mb-8">
+                    <img src="${staticChapter.teller_icon}" alt="Teller" class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50">
+                    <div class="absolute -bottom-2 -right-2 bg-red-500 text-white text-xs font-black px-3 py-1 rounded-full shadow-md tracking-wider">TELLER</div>
                 </div>
-                <div class="px-6 -mt-6">
-                    <div class="bg-white rounded-3xl p-6 shadow-xl shadow-gray-200/50 border border-gray-50 relative z-10">
-                        <p class="text-gray-600 text-center leading-relaxed font-medium text-sm">
-                            ${interpolateTemplate(staticChapter.chapter_overview, { petName })}
-                        </p>
-                    </div>
-                </div>
-                <div class="mt-10 px-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <ol class="space-y-4">
-                            ${staticChapter.desc_queries.map((q, qIdx) => `
-                                <li class="text-lg font-bold flex items-start">
-                                    <span class="query-number">${qIdx + 1}.</span>
-                                    <span>${interpolateTemplate(q.template, { petName })}</span>
-                                </li>
-                            `).join('')}
-                        </ol>
-                        <p class="mt-6 font-bold text-gray-700">${staticData.chapter_desc.keywords_suffix}</p>
-                    </div>
-                </div>
-                <div class="mt-10 px-6">
-                    <h4 class="text-xl font-black text-gray-900 mb-6 flex items-center">
-                        <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3"></span>
-                        ${staticData.chapter_desc.analysis_title}
-                    </h4>
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <ul class="space-y-4">
-                            ${staticChapter.analysis_elements.map(el => `
-                                <li class="flex items-start font-medium text-gray-600 text-sm">
-                                    <span>${interpolateTemplate(el, { petName })}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                </div>
-                <div class="mt-12 mb-12">
-                    <h4 class="px-6 text-xl font-black text-gray-900 mb-6 flex items-start">
-                        <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3 mt-1 shrink-0"></span>
-                        <span class="flex-1">${interpolateTemplate(staticData.chapter_desc.faq_title, { petName })}</span>
-                    </h4>
-                    <div class="px-4">
-                        <div id="faq-chat-container-${idx}" class="space-y-6"></div>
-                        <div id="faq-options-${idx}" class="mt-8 space-y-3 px-2"></div>
-                    </div>
-                </div>
-                <div id="common-scroll-footer-${idx}" class="pb-12"></div>
+                <h3 class="text-2xl font-black text-center leading-tight">
+                    이번 챕터는<br><span class="text-red-500">${staticChapter.title}</span> 이에요
+                </h3>
             </div>
+            <div class="px-5 -mt-6">
+                <div class="bg-white rounded-3xl p-5 shadow-xl shadow-gray-200/50 border border-gray-50 relative z-10">
+                    <p class="text-gray-600 text-center leading-relaxed font-medium text-sm">
+                        ${interpolateTemplate(staticChapter.chapter_overview, { petName })}
+                    </p>
+                </div>
+            </div>
+            <div class="mt-10 px-5">
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                    <ol class="space-y-4">
+                        ${staticChapter.desc_queries.map((q, qIdx) => `
+                            <li class="text-lg font-bold flex items-start">
+                                <span class="query-number">${qIdx + 1}.</span>
+                                <span>${interpolateTemplate(q.template, { petName })}</span>
+                            </li>
+                        `).join('')}
+                    </ol>
+                    <p class="mt-6 font-bold text-gray-700">${staticData.chapter_desc.keywords_suffix}</p>
+                </div>
+            </div>
+            <div class="mt-10 px-5">
+                <h4 class="text-xl font-black text-gray-900 mb-6 flex items-center">
+                    <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3"></span>
+                    ${staticData.chapter_desc.analysis_title}
+                </h4>
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                    <ul class="space-y-4">
+                        ${staticChapter.analysis_elements.map(el => `
+                            <li class="flex items-start font-medium text-gray-600 text-sm">
+                                <span>${interpolateTemplate(el, { petName })}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 mb-12">
+                <h4 class="px-5 text-xl font-black text-gray-900 mb-6 flex items-start">
+                    <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3 mt-1 shrink-0"></span>
+                    <span class="flex-1">${interpolateTemplate(staticData.chapter_desc.faq_title, { petName })}</span>
+                </h4>
+                <div class="px-5">
+                    <div id="faq-chat-container-${idx}" class="space-y-6"></div>
+                    <div id="faq-options-${idx}" class="mt-8 space-y-3 px-0"></div>
+                </div>
+            </div>
+            <div id="common-scroll-footer-${idx}" class="px-5 pb-12"></div>
         </div>
     `;
     initChapterFaq(idx, staticChapter, petName, petProfileImg, staticData);
@@ -311,11 +314,13 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
     const report = data.report_contents[idx];
     const staticChapter = staticData.chapters[idx];
     const pageStatic = staticData.chapter_content;
+    
+    // Standardized padding: px-5 (20px)
     container.innerHTML = `
         <div class="flex flex-col">
             ${getTabsHTML(idx, staticData.chapters)}
-            <div class="safe-area pb-12 bg-white">
-                <div class="glass-card rounded-3xl px-5 py-6 mb-8">
+            <div class="px-5 pb-12 bg-white">
+                <div class="mt-8 glass-card rounded-3xl px-5 py-6 mb-8">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="font-bold text-gray-800">${pageStatic.score_label}</h4>
                         <span id="chapter-score-${idx}" class="text-3xl font-black text-red-500">0점</span>

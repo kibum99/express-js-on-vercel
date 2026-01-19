@@ -12,6 +12,10 @@
     font-size: 1.1em;
 }
 
+ol.space-y-4 li {
+    color: #1a1a1a; /* 글자색 명시 */
+}
+
 /* Analysis Elements List */
 #analysis-list li {
     display: flex;
@@ -28,14 +32,30 @@
 }
 
 /* Chat UI Styles */
-#faq-chat-container {
+.faq-chat-container {
     display: flex;
     flex-direction: column;
-    background-color: #f8fafc;
+    background-color: #f3f4f6;
     padding: 24px 16px;
     border-radius: 24px;
-    border: 1px solid #f1f5f9;
-    min-height: 200px; /* Give some height for intersection observer */
+    border: 1px solid #e5e7eb;
+    min-height: 120px;
+    transition: all 0.3s ease;
+    position: relative;
+    justify-content: center;
+}
+
+.faq-chat-container.has-content {
+    background-color: #f8fafc;
+    justify-content: flex-start;
+}
+
+.faq-placeholder {
+    text-align: center;
+    color: #9ca3af;
+    font-weight: 600;
+    font-size: 0.95rem;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .chat-item {
@@ -103,7 +123,9 @@
     font-size: 0.95rem;
     line-height: 1.6;
     position: relative;
-    word-break: keep-all;
+    word-break: normal;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 

@@ -10,6 +10,7 @@
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
+    color: #ffffff; /* 그리드 내 기본 글자색을 흰색으로 설정 */
 }
 
 /* 세로 구분선 (연속된 한 줄) */
@@ -25,8 +26,10 @@
 }
 
 /* 제목열 스타일 (첫 번째 열) */
-.saju-box-label, 
-.saju-row-item:nth-child(5n+1) {
+#pet-saju-grid .saju-box-label, 
+#pet-saju-grid .saju-row-item:nth-child(5n+1),
+#owner-saju-grid .saju-box-label, 
+#owner-saju-grid .saju-row-item:nth-child(5n+1) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,8 +37,10 @@
 }
 
 /* 제목열 텍스트 통일 (천간, 지지 포함 모든 레이블) */
-.saju-box-label,
-.saju-row-item:nth-child(5n+1) > span {
+#pet-saju-grid .saju-box-label,
+#pet-saju-grid .saju-row-item:nth-child(5n+1) > span,
+#owner-saju-grid .saju-box-label,
+#owner-saju-grid .saju-row-item:nth-child(5n+1) > span {
     font-size: 12px !important;
     color: #a1a1aa !important;
     font-weight: 700 !important;
@@ -137,7 +142,7 @@
 /* 오행 및 특수 텍스트 색상 */
 .text-saju-blue { color: #64b5f6 !important; }
 .text-saju-red { color: #ef5350 !important; }
-.text-saju-black { color: #ffffff !important; }
+.text-saju-grid-white { color: #ffffff !important; }
 
 /* 챕터 토글 스타일 */
 .chapter-toggle-item {

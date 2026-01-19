@@ -1,13 +1,14 @@
 {
   "main": {
     "title_template": "${petName}의 사주운명<br>구석구석 살펴보기",
-    "scroll_hint": "밑으로 스크롤하여<br>사주 리포트 보기"
+    "scroll_hint": "사주운명 결과 보기"
   },
   "intro": {
     "welcome_title": "안녕하세요",
     "welcome_msg_template": "${petName}와 ${ownerName}의 사주를 분석했어요.\n두 분의 타고난 기운이 서로에게 어떤 영향을 주는지,\n그리고 함께할 때 어떤 시너지가 발생하는지 궁금하지 않으신가요?\n\n이번 리포트에서는 ${petName}의 타고난 성품부터\n두 분의 특별한 인연까지\n아주 깊이 있게 다루어 보았어요.\n서로를 더 깊이 이해하고 아껴주는\n소중한 시간이 되시길 바래요.\n\n지금부터 두 분만을 위한\n신비로운 사주 이야기를 시작할게요~",
     "pet_saju_title_template": "먼저 우리 <span class=\"highlight\">${petName}</span>의 만세력은...",
     "owner_saju_title_template": "다음으로 <span class=\"highlight\">${ownerName}</span>님의 만세력은...",
+    "intro_profile": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=300&q=80",
     "messages": [
       "두 분의 기운은 서로 보완하는 관계입니다.",
       "함께 있을 때 더 큰 시너지가 발생합니다.",
@@ -260,6 +261,7 @@
     "keywords_suffix": "의 궁금증들이 말끔히 해결돼요.",
     "analysis_title": "이런 사주 요소를 살펴요",
     "faq_title": "그런데...<br>사람들에게 적용되는 사주분석이<br>우리 ${petName}에게 보면서,<br><span class=\"highlight\">이런게 궁금하지는 않으셨나요?</span>",
+    "faq_end_btn": "더 궁금한 점이 없어요.\n이제 분석 내용을 보여주세요.",
     "footer_msg": "자 그럼 이제 보러 가볼까요?",
     "scroll_hint": "분석 리포트 보러가기"
   },
