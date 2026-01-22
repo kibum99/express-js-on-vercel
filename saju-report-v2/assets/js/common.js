@@ -40,3 +40,15 @@ function interpolateTemplate(template, data) {
         return data[key] !== undefined ? data[key] : match;
     });
 }
+
+/**
+ * 한자 및 특수 문자를 시스템 폰트 태그로 감쌉니다.
+ * @param {string} text - 변환할 텍스트
+ * @returns {string} - HTML 태그가 포함된 문자열
+ */
+function wrapSpecialCharacters(text) {
+    if (!text) return "";
+    // 한자 범위: \u4E00-\u9FFF
+    // ()괄호 안에 한자가 들어있는 경우도 처리하기 위해 정규식 사용
+    return text.replace(/([\u4E00-\u9FFF]+)/g, '<span class="system-font">$1</span>');
+}

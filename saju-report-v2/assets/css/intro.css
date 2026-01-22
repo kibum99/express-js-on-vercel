@@ -1,31 +1,32 @@
-/* assets/css/intro.css */
+/* Intro */
+
+/* Saju Grid */
 #pet-saju-grid, #owner-saju-grid {
     display: grid;
-    grid-template-columns: 52px 1fr 1fr 1fr 1fr; /* 제목열 너비 소폭 확장 */
+    grid-template-columns: 52px 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(8, auto);
     width: 100%;
-    gap: 18px 20px; /* 열 간격을 20px로 늘려 내부 패딩과 맞춤 */
-    padding: 16px 10px; /* 좌우 패딩을 10px로 소폭 줄임 */
-    background-color: #2c2c2e; /* 다크 모드 배경색 */
-    border-radius: 20px;
+    gap: 18px 20px;
+    padding: 16px 10px;
+    background-color: var(--color-dark-bg);
+    border-radius: var(--radius-lg);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
-    color: #ffffff; /* 그리드 내 기본 글자색을 흰색으로 설정 */
+    color: var(--color-dark-text);
 }
 
-/* 세로 구분선 (연속된 한 줄) */
 #pet-saju-grid::after, #owner-saju-grid::after {
     content: '';
     position: absolute;
     top: 16px;
     bottom: 16px;
-    left: 72px; /* 10px(패딩) + 52px(제목열) + 10px(간격의 절반) = 72px */
+    left: 72px;
     width: 1px;
     background-color: rgba(255, 255, 255, 0.1);
     pointer-events: none;
 }
 
-/* 제목열 스타일 (첫 번째 열) */
+/* Saju Grid Labels */
 #pet-saju-grid .saju-box-label, 
 #pet-saju-grid .saju-row-item:nth-child(5n+1),
 #owner-saju-grid .saju-box-label, 
@@ -36,15 +37,14 @@
     width: 100%;
 }
 
-/* 제목열 텍스트 통일 (천간, 지지 포함 모든 레이블) */
 #pet-saju-grid .saju-box-label,
 #pet-saju-grid .saju-row-item:nth-child(5n+1) > span,
 #owner-saju-grid .saju-box-label,
 #owner-saju-grid .saju-row-item:nth-child(5n+1) > span {
     font-size: 12px !important;
-    color: #a1a1aa !important;
+    color: var(--color-dark-text-muted) !important;
     font-weight: 700 !important;
-    text-align: center !important; /* 가운데 정렬 */
+    text-align: center !important;
     background-color: transparent !important;
     padding: 0 !important;
     border: none !important;
@@ -52,16 +52,15 @@
     line-height: 1.2;
 }
 
-/* 년주, 월주, 일주, 시주 등 상단 레이블 */
 .saju-column-label {
-    font-size: 14px; /* 12px -> 14px로 키움 */
-    color: #ffffff;
-    font-weight: 800; /* 700 -> 800으로 더 강조 */
+    font-size: 14px;
+    color: var(--color-dark-text);
+    font-weight: 800;
     text-align: center;
     white-space: nowrap;
 }
 
-/* 기타신살 병합 행 스타일 */
+/* Saju Merged Row */
 .saju-merged-row {
     grid-column: 2 / span 4;
     grid-row: 8;
@@ -74,14 +73,14 @@
     gap: 6px 8px;
     padding: 8px 12px;
     font-size: 12px;
-    color: #ffffff;
+    color: var(--color-dark-text);
     word-break: keep-all;
     text-align: center;
 }
 
 .saju-merged-row span {
-    background-color: #48484a; /* 태그 배경색 */
-    color: #ebebf5;
+    background-color: var(--color-dark-surface);
+    color: var(--color-dark-text-alt);
     padding: 3px 8px;
     border-radius: 6px;
     white-space: nowrap;
@@ -89,11 +88,11 @@
     font-weight: 600;
 }
 
+/* Saju Grid Items */
 .saju-header-cell, .saju-cell {
     display: contents;
 }
 
-/* 데이터 영역 공통 스타일 */
 .saju-row-item {
     width: 100%;
     min-height: 28px;
@@ -115,15 +114,15 @@
 }
 
 .saju-box-label {
-    height: 100%; /* saju-box의 aspect-ratio와 맞추기 위해 높이 확보 */
+    height: 100%;
 }
 
 .saju-box img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .saju-sub-label {
@@ -134,28 +133,28 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    color: #ffffff;
+    color: var(--color-dark-text);
     font-weight: 800;
     white-space: nowrap;
 }
 
-/* 오행 및 특수 텍스트 색상 */
-.text-saju-blue { color: #64b5f6 !important; }
-.text-saju-red { color: #ef5350 !important; }
-.text-saju-grid-white { color: #ffffff !important; }
+/* Saju Text Colors */
+.text-saju-blue { color: var(--color-saju-blue) !important; }
+.text-saju-red { color: var(--color-saju-red) !important; }
+.text-saju-grid-white { color: var(--color-dark-text) !important; }
 
-/* 챕터 토글 스타일 */
+/* Chapter Toggle */
 .chapter-toggle-item {
-    background-color: #ffffff;
-    border: 1px solid #f0f0f0;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-light);
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.2s ease-in-out;
 }
 
 .chapter-toggle-item.active {
-    border-color: #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: var(--color-border-gray);
+    box-shadow: var(--shadow-md);
 }
 
 .toggle-header {
@@ -183,15 +182,16 @@
 
 .toggle-title {
     font-size: 15px;
+    font-family: 'GangwonEducationModuche', sans-serif;
     font-weight: 700;
-    color: #333333;
+    color: var(--color-text-dark);
 }
 
 .toggle-arrow {
     width: 20px;
     height: 20px;
     transition: transform 0.3s ease;
-    color: #999999;
+    color: var(--color-text-gray);
 }
 
 .chapter-toggle-item.active .toggle-arrow {
@@ -202,7 +202,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out, padding 0.3s ease;
-    background-color: #ffffff;
+    background-color: var(--color-surface);
 }
 
 .chapter-toggle-item.active .toggle-content {
@@ -221,12 +221,14 @@
     align-items: flex-start;
     gap: 8px;
     font-size: 13.5px;
-    color: #555555;
+    font-family: 'GangwonEducationModuche', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-light);
     line-height: 1.5;
 }
 
 .query-bullet {
-    color: #ef4444;
+    color: var(--color-primary);
     font-weight: bold;
     margin-top: 1px;
 }

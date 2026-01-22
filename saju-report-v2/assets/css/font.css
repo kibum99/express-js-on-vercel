@@ -1,0 +1,97 @@
+/* Noto Sans KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+
+/* GangwonEducationModuche */
+@font-face {
+    font-family: 'GangwonEducationModuche';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFLightA.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GangwonEducationModuche';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* Base text - Gangwon */
+.text-base {
+    font-family: 'GangwonEducationModuche', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+/* Typography scale - Gangwon */
+.display {
+    composes: text-base;
+    font-size: 40px;
+}
+
+.heading {
+    composes: text-base;
+    font-size: 32px;
+}
+
+.title {
+    composes: text-base;
+    font-size: 24px;
+}
+
+.subtitle {
+    composes: text-base;
+    font-size: 20px;
+}
+
+.body {
+    font-family: 'GangwonEducationModuche', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-text);
+}
+
+.label {
+    font-family: 'GangwonEducationModuche', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+}
+
+.caption {
+    font-family: 'GangwonEducationModuche', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-text);
+}
+
+/* Text - Noto Sans */
+.text-noto {
+    font-family: 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--color-text);
+}
+
+.text-noto-regular {
+    composes: text-noto;
+    font-weight: 400;
+}
+
+.text-noto-medium {
+    composes: text-noto;
+    font-weight: 500;
+}
+
+.text-noto-semibold {
+    composes: text-noto;
+    font-weight: 600;
+}
+
+.text-noto-bold {
+    composes: text-noto;
+    font-weight: 700;
+}
+
+/* System Font Fallback (for Hanja, etc.) */
+.system-font {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}

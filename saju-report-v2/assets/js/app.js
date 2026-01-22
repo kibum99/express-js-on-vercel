@@ -7,14 +7,14 @@ function renderMainSection(data, staticData, petName) {
     const container = document.getElementById('section-main');
     if (!container) return;
 
-    const petPersona = data.persona.find(p => p.type === 'pet');
+    const petPersona = data.persona && data.persona.find(p => p.type === 'pet');
     const petImage = petPersona && petPersona.profile_image ? petPersona.profile_image : 'https://via.placeholder.com/300x300?text=Pet+Image';
 
     container.innerHTML = `
         <div class="flex flex-col items-center justify-between py-12 px-5 overflow-hidden min-h-screen">
             <div class="text-center fade-in">
                 <h1 id="main-title" class="text-2xl font-bold leading-tight text-gray-900">
-                    ${interpolateTemplate(staticData.main.title_template, { petName })}
+                    ${wrapSpecialCharacters(interpolateTemplate(staticData.main.title_template, { petName }))}
                 </h1>
                 <div class="mt-4 flex justify-center">
                     <div class="w-12 h-1 bg-black rounded-full"></div>
@@ -50,17 +50,23 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
     if (!container) return;
 
     container.className = 'report-section pb-12';
-    const formatPersonaInfo = (persona) => `${persona.birth} (${persona.solar_lunar}) / ${persona.gender}`;
+    const formatPersonaInfo = (persona) => persona ? `${persona.birth} (${persona.solar_lunar}) / ${persona.gender}` : '';
     
     container.innerHTML = `
         <div class="safe-area">
             <div class="flex flex-col items-center mt-8">
-                <img id="pet-profile" src="${staticData.intro.intro_profile || petPersona.profile_image || 'https://via.placeholder.com/80x80'}" alt="Pet" class="w-30 h-30 rounded-full border-2 border-gray-200 shadow-sm">
-                <div class="mt-4 text-center">
-                    <p id="welcome-title" class="text-lg font-bold">${staticData.intro.welcome_title}</p>
-                    <p id="welcome-msg" class="text-sm text-gray-600 mt-1">
-                        ${interpolateTemplate(staticData.intro.welcome_msg_template, { petName, ownerName }).replace(/\n/g, '<br>')}
-                    </p>
+                <div class="relative w-60 h-80 rounded-[120px] border-8 border-white shadow-2xl overflow-hidden">
+                    <div class="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] z-10 pointer-events-none"></div>
+                    <img id="pet-profile" src="${staticData.intro.intro_profile || (petPersona && petPersona.profile_image) || 'https://via.placeholder.com/80x80'}" alt="Pet" class="w-full h-full object-cover">
+                </div>
+                <div class="mt-10 text-center">
+                    <p id="welcome-title" class="text-xl font-bold"><span class="highlight">${wrapSpecialCharacters(staticData.intro.welcome_title)}</span></p>
+                    <div id="welcome-msg" class="text-sm text-gray-600 mt-4">
+                        ${interpolateTemplate(staticData.intro.welcome_msg_template, { petName, ownerName })
+                            .split('\n\n')
+                            .map((p, i) => `<p class="${i > 0 ? 'mt-8' : ''}">${wrapSpecialCharacters(p).replace(/\n/g, '<br>')}</p>`)
+                            .join('')}
+                    </div>
                 </div>
             </div>
 
@@ -68,7 +74,7 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
 
             <div class="mb-10">
                 <div class="text-center mb-4">
-                    <h3 id="pet-saju-title" class="font-bold text-lg text-gray-900">${interpolateTemplate(staticData.intro.pet_saju_title_template, { petName })}</h3>
+                    <h3 id="pet-saju-title" class="font-bold text-lg text-gray-900">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.pet_saju_title_template, { petName }))}</h3>
                     <p id="pet-persona-info" class="text-[11px] text-gray-400 mt-1">${formatPersonaInfo(petPersona)}</p>
                 </div>
                 <div id="pet-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl"></div>
@@ -76,7 +82,7 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
 
             <div class="mb-10">
                 <div class="text-center mb-4">
-                    <h3 id="owner-saju-title" class="font-bold text-lg text-gray-900">${interpolateTemplate(staticData.intro.owner_saju_title_template, { ownerName })}</h3>
+                    <h3 id="owner-saju-title" class="font-bold text-lg text-gray-900">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.owner_saju_title_template, { ownerName }))}</h3>
                     <p id="owner-persona-info" class="text-[11px] text-gray-400 mt-1">${formatPersonaInfo(ownerPersona)}</p>
                 </div>
                 <div id="owner-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl"></div>
@@ -94,12 +100,12 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
         </div>
     `;
 
-    const petSaju = data.saju.find(s => s.type === 'pet');
-    const ownerSaju = data.saju.find(s => s.type === 'owner');
+    const petSaju = data.saju && data.saju.find(s => s.type === 'pet');
+    const ownerSaju = data.saju && data.saju.find(s => s.type === 'owner');
     
     renderSajuGrid('pet-saju-grid', petSaju);
     renderSajuGrid('owner-saju-grid', ownerSaju);
-    renderChapterToggles('chapter-toggles', staticData.chapters, { petName, ownerName }, 'toggle-all-btn');
+    renderChapterToggles('chapter-toggles', staticData.chapters, { petName, ownerName }, 'toggle-all-btn', data);
     initToggleAllButton('toggle-all-btn', 'chapter-toggles');
 }
 
@@ -120,7 +126,7 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
                 <div class="fade-in flex flex-col items-center relative z-10 space-y-20">
                     <div id="chapter-title-container" class="flex flex-col items-center relative z-10">
                         <span class="text-lg font-bold text-red-400 mb-4 uppercase tracking-[0.3em] reveal-text">Chapter. ${idx + 1}</span>
-                        <span class="text-5xl font-black text-gray-900 reveal-text" style="animation-delay: 0.1s;">${staticChapter.title}</span>
+                        <span class="text-5xl font-black text-gray-900 reveal-text" style="animation-delay: 0.1s;">${wrapSpecialCharacters(staticChapter.title)}</span>
                     </div>
                     <div class="relative z-10 reveal-text" style="animation-delay: 0.3s;">
                         <div class="w-56 h-56 rounded-full bg-white shadow-2xl flex items-center justify-center overflow-hidden border-8 border-red-50">
@@ -128,7 +134,7 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
                         </div>
                     </div>
                     <p class="text-3xl font-bold leading-relaxed text-gray-800 z-10 reveal-text px-4" style="animation-delay: 0.5s;">
-                        ${interpolateTemplate(staticChapter.questionTemplate, { petName })}
+                        ${wrapSpecialCharacters(interpolateTemplate(staticChapter.questionTemplate, { petName }))}
                     </p>
                 </div>
             </div>
@@ -143,7 +149,12 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
  */
 function renderChapterDescSection(idx, data, staticData, petName, petProfileImg, container) {
     const staticChapter = staticData.chapters[idx];
+    const report = data.report_contents && data.report_contents[idx];
+    if (!report || !report.reportContent) return;
     
+    // v2 형식: reportContent의 각 항목에 있는 question 필드를 사용
+    const queries = report.reportContent.map(item => item.question);
+
     container.innerHTML = `
         <div class="flex flex-col bg-gray-50/30">
             <div class="hero-section flex flex-col items-center pt-12 pb-14 px-5 bg-white border-b border-gray-50">
@@ -151,39 +162,39 @@ function renderChapterDescSection(idx, data, staticData, petName, petProfileImg,
                     <img src="${staticChapter.teller_icon}" alt="Teller" class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50">
                 </div>
                 <h3 class="text-2xl font-black text-center leading-tight">
-                    이번 챕터는<br><span class="text-red-500">${staticChapter.title}</span> 이에요
+                    이번 챕터는<br><span class="text-red-500">${wrapSpecialCharacters(staticChapter.title)}</span> 이에요
                 </h3>
             </div>
             <div class="px-5 -mt-6">
                 <div class="bg-white rounded-3xl p-5 shadow-xl shadow-gray-200/50 border border-gray-50 relative z-10">
                     <p class="text-gray-600 text-center leading-relaxed font-medium text-sm">
-                        ${interpolateTemplate(staticChapter.chapter_overview, { petName })}
+                        ${wrapSpecialCharacters(interpolateTemplate(staticChapter.chapter_overview, { petName }))}
                     </p>
                 </div>
             </div>
             <div class="mt-10 px-5">
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                     <ol class="space-y-4">
-                        ${staticChapter.desc_queries.map((q, qIdx) => `
+                        ${queries.map((qText, qIdx) => `
                             <li class="text-lg font-bold flex items-start">
                                 <span class="query-number">${qIdx + 1}.</span>
-                                <span>${interpolateTemplate(q.template, { petName })}</span>
+                                <span>${wrapSpecialCharacters(interpolateTemplate(qText, { petName }))}</span>
                             </li>
                         `).join('')}
                     </ol>
-                    <p class="mt-6 font-bold text-gray-700">${staticData.chapter_desc.keywords_suffix}</p>
+                    <p class="mt-6 font-bold text-gray-700">${wrapSpecialCharacters(staticData.chapter_desc.keywords_suffix)}</p>
                 </div>
             </div>
             <div class="mt-10 px-5">
                 <h4 class="text-xl font-black text-gray-900 mb-6 flex items-center">
                     <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3"></span>
-                    ${staticData.chapter_desc.analysis_title}
+                    ${wrapSpecialCharacters(staticData.chapter_desc.analysis_title)}
                 </h4>
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                     <ul class="space-y-4">
                         ${staticChapter.analysis_elements.map(el => `
                             <li class="flex items-start font-medium text-gray-600 text-sm">
-                                <span>${interpolateTemplate(el, { petName })}</span>
+                                <span>${wrapSpecialCharacters(interpolateTemplate(el, { petName }))}</span>
                             </li>
                         `).join('')}
                     </ul>
@@ -192,7 +203,7 @@ function renderChapterDescSection(idx, data, staticData, petName, petProfileImg,
             <div class="mt-12 mb-12">
                 <h4 class="px-5 text-xl font-black text-gray-900 mb-6 flex items-start">
                     <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3 mt-1 shrink-0"></span>
-                    <span class="flex-1">${interpolateTemplate(staticData.chapter_desc.faq_title, { petName })}</span>
+                    <span class="flex-1">${wrapSpecialCharacters(interpolateTemplate(staticData.chapter_desc.faq_title, { petName }))}</span>
                 </h4>
                 <div class="px-5">
                     <div id="faq-chat-container-${idx}" class="faq-chat-container space-y-6"></div>
@@ -209,7 +220,9 @@ function renderChapterDescSection(idx, data, staticData, petName, petProfileImg,
  * 챕터 내용 섹션을 렌더링합니다.
  */
 function renderChapterContentSection(idx, data, staticData, petName, container) {
-    const report = data.report_contents[idx];
+    const report = data.report_contents && data.report_contents[idx];
+    if (!report || !report.reportContent) return;
+
     const staticChapter = staticData.chapters[idx];
     const pageStatic = staticData.chapter_content;
     
@@ -218,7 +231,7 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
             <div class="px-5 pb-12 bg-white">
                 <div class="mt-8 glass-card rounded-3xl px-5 py-6 mb-8">
                     <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-bold text-gray-800">${pageStatic.score_label}</h4>
+                        <h4 class="font-bold text-gray-800">${wrapSpecialCharacters(pageStatic.score_label)}</h4>
                         <span id="chapter-score-${idx}" class="text-3xl font-black text-red-500">0점</span>
                     </div>
                     <div class="relative h-32 mt-4 mb-2">
@@ -231,23 +244,25 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
                             <div class="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white shadow-sm"></div>
                         </div>
                     </div>
-                    <p id="score-avg-hint-${idx}" class="text-center text-sm font-bold text-gray-800 mt-4">상위 ...% 수준입니다.</p>
+                    <p id="score-avg-hint-${idx}" class="text-center text-sm font-bold text-gray-800 mt-4">${wrapSpecialCharacters(pageStatic.score_avg_hint).replace('${percentage}', '...')}</p>
                 </div>
                 <div class="mb-6">
-                    <h4 class="font-black text-xl text-gray-900 mb-6">${pageStatic.detailed_report_title}</h4>
+                    <h4 class="font-black text-xl text-gray-900 mb-6">${wrapSpecialCharacters(pageStatic.detailed_report_title)}</h4>
                     <div id="report-sections-container-${idx}" class="glass-card-gray rounded-3xl px-5 py-10 space-y-24">
                         ${report.reportContent.map((item, qIdx) => {
-                            const staticQuery = staticChapter.desc_queries.find(q => q.query_id === item.query_id);
-                            const queryText = interpolateTemplate(staticQuery ? staticQuery.template : '', { petName });
-                            const paragraphs = item.content.split('\n').filter(p => p.trim() !== '');
+                            // v2 형식: question/explanation 필드 사용
+                            const queryText = item.question;
+                            const contentText = item.explanation;
+                            const paragraphs = contentText.split('\n').filter(p => p.trim() !== '');
+                            
                             return `
                                 <div class="sub-query-item">
                                     <h5 class="text-lg font-bold text-gray-800 mb-4 flex items-start">
                                         <span class="text-red-500 mr-2 flex-shrink-0">Q${qIdx + 1}.</span>
-                                        <span class="flex-1">${queryText}</span>
+                                        <span class="flex-1">${wrapSpecialCharacters(interpolateTemplate(queryText, { petName }))}</span>
                                     </h5>
                                     <div class="text-gray-600 leading-relaxed font-medium content-paragraph">
-                                        ${paragraphs.map(p => `<p>${p}</p>`).join('')}
+                                        ${paragraphs.map(p => `<p>${wrapSpecialCharacters(interpolateTemplate(p, { petName }))}</p>`).join('')}
                                     </div>
                                 </div>
                             `;
@@ -257,9 +272,9 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
                 <div class="glass-card-pink rounded-3xl px-5 py-6 mb-12 mt-12">
                     <div class="flex items-center mb-4">
                         <span class="text-3xl mr-3">${report.lucky_tip.icon}</span>
-                        <h4 class="font-bold text-pink-800 text-lg">${pageStatic.lucky_tip_title}</h4>
+                        <h4 class="font-bold text-pink-800 text-lg">${wrapSpecialCharacters(pageStatic.lucky_tip_title)}</h4>
                     </div>
-                    <p class="text-pink-900 leading-relaxed font-medium">${report.lucky_tip.text}</p>
+                    <p class="text-pink-900 leading-relaxed font-medium">${wrapSpecialCharacters(report.lucky_tip.text)}</p>
                 </div>
             </div>
         </div>
@@ -279,6 +294,19 @@ const scrollCallbacks = {};
 function registerScrollCallback(id, callback) {
     scrollCallbacks[id] = { callback, executed: false };
 }
+
+/**
+ * 특정 ID의 콜백을 강제로 실행합니다. (섹션이 unhide될 때 등)
+ */
+function triggerScrollCallback(id) {
+    if (scrollCallbacks[id] && !scrollCallbacks[id].executed) {
+        scrollCallbacks[id].callback();
+        scrollCallbacks[id].executed = true;
+    }
+}
+
+// 전역에서 접근 가능하도록 설정 (components.js 등에서 사용)
+window.triggerScrollCallback = triggerScrollCallback;
 
 /**
  * IntersectionObserver를 사용하여 스크롤 애니메이션을 초기화합니다.
@@ -308,8 +336,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!data || !staticData) return;
 
     // 2. 페르소나 추출
-    const petPersona = data.persona.find(p => p.type === 'pet');
-    const ownerPersona = data.persona.find(p => p.type === 'owner');
+    const petPersona = data.persona && data.persona.find(p => p.type === 'pet');
+    const ownerPersona = data.persona && data.persona.find(p => p.type === 'owner');
     const petName = petPersona ? petPersona.name : '반려동물';
     const ownerName = ownerPersona ? ownerPersona.name : '보호자';
     const petProfileImg = petPersona ? petPersona.profile_image : 'https://via.placeholder.com/80x80';

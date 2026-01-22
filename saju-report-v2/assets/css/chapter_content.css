@@ -1,13 +1,15 @@
-/* assets/css/chapter_content.css */
+/* Chapter Content */
+
+/* Content Paragraph */
 .content-paragraph {
     line-height: 1.8;
-    color: #374151;
+    color: var(--color-text-muted);
     font-size: 16px;
 }
 
 .content-paragraph p {
-    margin-bottom: 1.5rem; /* 문단 사이 간격 */
-    text-indent: 1rem;     /* 문단 첫 글자 들여쓰기 */
+    margin-bottom: 1.5rem;
+    text-indent: 1rem;
 }
 
 .content-paragraph p:last-child {
@@ -15,9 +17,10 @@
 }
 
 .content-paragraph b {
-    color: #ef4444;
+    color: var(--color-primary);
 }
 
+/* Score Elements */
 #score-pointer {
     width: 2px;
 }

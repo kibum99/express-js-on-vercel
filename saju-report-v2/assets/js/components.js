@@ -50,7 +50,7 @@ function renderSajuGrid(containerId, saju) {
         wrapper.className = 'saju-row-item';
         const span = document.createElement('span');
         span.className = 'saju-sub-label text-saju-grid-white';
-        span.innerText = saju.천간십성[i] || '-';
+        span.innerHTML = wrapSpecialCharacters(saju.천간십성[i] || '-');
         wrapper.appendChild(span);
         container.appendChild(wrapper);
     }
@@ -76,7 +76,7 @@ function renderSajuGrid(containerId, saju) {
         wrapper.className = 'saju-row-item';
         const span = document.createElement('span');
         span.className = 'saju-sub-label text-saju-grid-white';
-        span.innerText = saju.지지십성[i] || '-';
+        span.innerHTML = wrapSpecialCharacters(saju.지지십성[i] || '-');
         wrapper.appendChild(span);
         container.appendChild(wrapper);
     }
@@ -88,7 +88,7 @@ function renderSajuGrid(containerId, saju) {
         wrapper.className = 'saju-row-item';
         const span = document.createElement('span');
         span.className = 'saju-sub-label text-saju-blue';
-        span.innerText = saju["12운성"][i] || '';
+        span.innerHTML = wrapSpecialCharacters(saju["12운성"][i] || '');
         wrapper.appendChild(span);
         container.appendChild(wrapper);
     }
@@ -100,7 +100,7 @@ function renderSajuGrid(containerId, saju) {
         wrapper.className = 'saju-row-item';
         const span = document.createElement('span');
         span.className = 'saju-sub-label text-saju-red';
-        span.innerText = saju["12신살"][i] || '';
+        span.innerHTML = wrapSpecialCharacters(saju["12신살"][i] || '');
         wrapper.appendChild(span);
         container.appendChild(wrapper);
     }
@@ -113,7 +113,7 @@ function renderSajuGrid(containerId, saju) {
     if (otherSinsal.length > 0) {
         otherSinsal.forEach(s => {
             const span = document.createElement('span');
-            span.innerText = `#${s}`;
+            span.innerHTML = wrapSpecialCharacters(`#${s}`);
             mergedRow.appendChild(span);
         });
     } else {
@@ -129,7 +129,7 @@ function appendRowHeader(container, h) {
     if (h.isBox) {
         const box = document.createElement('div');
         box.className = 'saju-box-label';
-        box.innerText = h.text;
+        box.innerHTML = wrapSpecialCharacters(h.text);
         container.appendChild(box);
     } else {
         const wrapper = document.createElement('div');
@@ -139,10 +139,10 @@ function appendRowHeader(container, h) {
             span.className = 'saju-column-label';
             span.style.backgroundColor = 'transparent';
             span.style.color = '#ffffff';
-            span.innerText = h.text;
+            span.innerHTML = wrapSpecialCharacters(h.text);
         } else if (h.isSub) {
             span.className = `saju-sub-label ${h.class || ''} font-extrabold`;
-            span.innerText = h.text;
+            span.innerHTML = wrapSpecialCharacters(h.text);
         }
         wrapper.appendChild(span);
         container.appendChild(wrapper);
@@ -175,7 +175,7 @@ function renderGlobalChapterTabs(containerId, chapters) {
 
     container.innerHTML = chapters.map((chapter, index) => `
         <div class="chapter-tab-item ${index === 0 ? 'active' : ''}" data-index="${index}">
-            ${chapter.title}
+            ${wrapSpecialCharacters(chapter.title)}
         </div>
     `).join('');
 
@@ -201,9 +201,12 @@ function updateActiveTab(index) {
     const container = document.getElementById('global-chapter-tabs');
     if (!container) return;
 
-    container.querySelectorAll('.chapter-tab-item').forEach((item, i) => {
+    const tabs = container.querySelectorAll('.chapter-tab-item');
+    tabs.forEach((item, i) => {
         if (i == index) {
             item.classList.add('active');
+            // 활성 탭이 중앙에 오도록 스크롤
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
             item.classList.remove('active');
         }
@@ -213,20 +216,26 @@ function updateActiveTab(index) {
 /**
  * 인트로 섹션의 챕터 토글 리스트를 렌더링합니다.
  */
-function renderChapterToggles(containerId, chapters, params, btnId) {
+function renderChapterToggles(containerId, chapters, params, btnId, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
     
     container.innerHTML = ''; // 기존 내용 삭제
     
-    chapters.forEach(chapter => {
+    chapters.forEach((chapter, idx) => {
+        const report = data.report_contents && data.report_contents[idx];
+        if (!report || !report.reportContent) return;
+
+        // v2 형식: reportContent의 각 항목에 있는 question 필드를 사용
+        const queries = report.reportContent.map(item => item.question);
+
         const item = document.createElement('div');
         item.className = 'chapter-toggle-item active';
         item.innerHTML = `
             <button class="toggle-header">
                 <div class="toggle-header-left">
                     <img src="${chapter.icon}" alt="${chapter.title}" class="toggle-icon">
-                    <span class="toggle-title">${chapter.title}</span>
+                    <span class="toggle-title">${wrapSpecialCharacters(chapter.title)}</span>
                 </div>
                 <svg class="toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -234,10 +243,10 @@ function renderChapterToggles(containerId, chapters, params, btnId) {
             </button>
             <div class="toggle-content">
                 <div class="query-list">
-                    ${chapter.desc_queries.map(q => `
+                    ${queries.map(qText => `
                         <div class="query-item">
                             <span class="query-bullet">Q.</span>
-                            <span>${interpolateTemplate(q.template, params)}</span>
+                            <span>${wrapSpecialCharacters(interpolateTemplate(qText, params))}</span>
                         </div>
                     `).join('')}
                 </div>
@@ -291,7 +300,7 @@ function animateScoreChart(idx, score, hintTemplate) {
     const hintText = document.getElementById(`score-avg-hint-${idx}`);
     const scoreText = document.getElementById(`chapter-score-${idx}`);
     
-    if (!bgPath) return;
+    if (!bgPath || !highlightPath || !pointer || !hintText || !scoreText) return;
 
     const zScore = (s) => (s - 50) / 50 * 2.5;
     const pdf = (z) => (1 / Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * z * z);
@@ -323,15 +332,15 @@ function animateScoreChart(idx, score, hintTemplate) {
         const pdfValue = pdf(currentZ);
         const yPercent = ((40 - (pdfValue * yScale)) / 40) * 100;
         
-        pointer.style.left = Math.max(0, Math.min(100, currentScore)) + '%';
-        pointer.style.top = yPercent + '%';
-        pointer.style.height = (100 - yPercent) + '%';
-        highlightPath.style.clipPath = `inset(0 0 0 ${Math.max(0, Math.min(100, currentScore))}%)`;
-        scoreText.innerText = Math.max(0, Math.round(currentScore)) + '점';
+        if (pointer) pointer.style.left = Math.max(0, Math.min(100, currentScore)) + '%';
+        if (pointer) pointer.style.top = yPercent + '%';
+        if (pointer) pointer.style.height = (100 - yPercent) + '%';
+        if (highlightPath) highlightPath.style.clipPath = `inset(0 0 0 ${Math.max(0, Math.min(100, currentScore))}%)`;
+        if (scoreText) scoreText.innerText = Math.max(0, Math.round(currentScore)) + '점';
         
         const topPercent = (1 - cdf(currentZ)) * 100;
         const topStr = topPercent < 0.1 ? "0.1%" : (topPercent > 99.9 ? "99.9%" : topPercent.toFixed(1) + "%");
-        hintText.innerHTML = hintTemplate.replace('${percentage}', `<span class="highlight">${topStr}</span>`);
+        if (hintText) hintText.innerHTML = wrapSpecialCharacters(hintTemplate.replace('${percentage}', topStr));
         
         if (progress < 1) requestAnimationFrame(animate);
     };
@@ -383,7 +392,7 @@ function initFaqChat(idx, staticChapter, petName, petProfileImg, staticData) {
         remainingFaqs.forEach(faq => {
             const btn = document.createElement('button');
             btn.className = 'faq-question-btn';
-            btn.textContent = interpolateTemplate(faq.question, { petName });
+            btn.innerHTML = wrapSpecialCharacters(interpolateTemplate(faq.question, { petName }));
             btn.onclick = () => handleFaqClick(faq);
             optionsContainer.appendChild(btn);
         });
@@ -391,7 +400,7 @@ function initFaqChat(idx, staticChapter, petName, petProfileImg, staticData) {
         if (isEndBtnActive) {
             const endBtn = document.createElement('button');
             endBtn.className = 'faq-question-btn border-red-200 text-red-500 font-bold bg-red-50/50';
-            endBtn.textContent = staticData.chapter_desc.faq_end_btn || "더 궁금한 점이 없어요";
+            endBtn.innerHTML = wrapSpecialCharacters(staticData.chapter_desc.faq_end_btn || "더 궁금한 점이 없어요");
             endBtn.onclick = () => {
                 if (isTyping) return;
                 isEndBtnActive = false;
@@ -400,6 +409,11 @@ function initFaqChat(idx, staticChapter, petName, petProfileImg, staticData) {
                 const contentSec = document.getElementById(`section-chapter-content-${idx}`);
                 if (contentSec) {
                     contentSec.classList.remove('hidden');
+                    
+                    // 섹션이 나타날 때 점수 차트 애니메이션 등이 즉시 실행되도록 트리거
+                    if (window.triggerScrollCallback) {
+                        window.triggerScrollCallback(contentSec.id);
+                    }
                     
                     setTimeout(() => {
                         const header = document.getElementById('global-chapter-tabs');
@@ -463,9 +477,27 @@ function initFaqChat(idx, staticChapter, petName, petProfileImg, staticData) {
  * 타이핑 효과를 적용합니다.
  */
 async function typeEffect(el, text, speed = 20) {
-    el.textContent = '';
-    for (const char of text) {
-        el.textContent += char;
-        await new Promise(r => setTimeout(r, speed));
+    el.innerHTML = '';
+    // HTML 태그가 포함될 수 있으므로 wrapSpecialCharacters를 먼저 적용하고 태그 단위로 처리하거나,
+    // 간단하게 전체를 먼저 감싸고 한 글자씩 렌더링하는 대신 innerHTML을 사용하여 태그가 깨지지 않게 함
+    const wrappedText = wrapSpecialCharacters(text);
+    
+    // 단순 글자 단위 타이핑을 위해 임시 요소 생성
+    const temp = document.createElement('div');
+    temp.innerHTML = wrappedText;
+    
+    // 텍스트 노드와 요소를 구분하여 순차적으로 출력
+    const nodes = Array.from(temp.childNodes);
+    for (const node of nodes) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            for (const char of node.textContent) {
+                el.innerHTML += char;
+                await new Promise(r => setTimeout(r, speed));
+            }
+        } else {
+            // span 등 태그인 경우 통째로 추가 (한자는 즉시 나타남)
+            el.appendChild(node.cloneNode(true));
+            await new Promise(r => setTimeout(r, speed * 2));
+        }
     }
 }

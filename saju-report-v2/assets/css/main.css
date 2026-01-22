@@ -1,4 +1,6 @@
-/* assets/css/main.css */
+/* Main */
+
+/* Animation Delays */
 .delay-200 {
     animation-delay: 0.2s;
     animation-fill-mode: both;
@@ -9,6 +11,7 @@
     animation-fill-mode: both;
 }
 
+/* Pet Image Container */
 #pet-image-container::after {
     content: '';
     position: absolute;
@@ -17,7 +20,7 @@
     transform: translate(-50%, -50%);
     width: 120%;
     height: 120%;
-    border: 1px dashed #ccc;
+    border: 1px dashed var(--color-border-dashed);
     border-radius: 50%;
     z-index: -1;
 }

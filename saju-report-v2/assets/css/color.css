@@ -1,0 +1,52 @@
+/* Color Variables */
+:root {
+    /* Primary */
+    --color-primary: #ef4444;
+    --color-primary-light: #fee2e2;
+    --color-primary-dark: #991b1b;
+    --color-primary-hover: #ff6b6b;
+
+    /* Text */
+    --color-text: #1a1a1a;
+    --color-text-secondary: #9ca3af;
+    --color-text-muted: #374151;
+    --color-text-light: #555555;
+    --color-text-dark: #333333;
+    --color-text-gray: #999999;
+    --color-text-slate: #1f2937;
+
+    /* Background */
+    --color-background: #f3f4f6;
+    --color-background-alt: #f8fafc;
+    --color-background-light: #f9fafb;
+    --color-surface: #ffffff;
+
+    /* Border */
+    --color-border: #e5e7eb;
+    --color-border-light: #f0f0f0;
+    --color-border-dark: #d1d5db;
+    --color-border-gray: #e0e0e0;
+    --color-border-dashed: #ccc;
+
+    /* Dark Mode (Saju Grid) */
+    --color-dark-bg: #2c2c2e;
+    --color-dark-surface: #48484a;
+    --color-dark-text: #ffffff;
+    --color-dark-text-muted: #a1a1aa;
+    --color-dark-text-alt: #ebebf5;
+
+    /* Special */
+    --color-saju-blue: #64b5f6;
+    --color-saju-red: #ef5350;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 40px -12px rgba(0, 0, 0, 0.12);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+}

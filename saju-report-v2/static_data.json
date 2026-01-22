@@ -4,254 +4,312 @@
     "scroll_hint": "사주운명 결과 보기"
   },
   "intro": {
-    "welcome_title": "안녕하세요",
+    "welcome_title": "안녕하세요 멍도사예요",
     "welcome_msg_template": "${petName}와 ${ownerName}의 사주를 분석했어요.\n두 분의 타고난 기운이 서로에게 어떤 영향을 주는지,\n그리고 함께할 때 어떤 시너지가 발생하는지 궁금하지 않으신가요?\n\n이번 리포트에서는 ${petName}의 타고난 성품부터\n두 분의 특별한 인연까지\n아주 깊이 있게 다루어 보았어요.\n서로를 더 깊이 이해하고 아껴주는\n소중한 시간이 되시길 바래요.\n\n지금부터 두 분만을 위한\n신비로운 사주 이야기를 시작할게요~",
     "pet_saju_title_template": "먼저 우리 <span class=\"highlight\">${petName}</span>의 만세력은...",
     "owner_saju_title_template": "다음으로 <span class=\"highlight\">${ownerName}</span>님의 만세력은...",
-    "intro_profile": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=300&q=80",
-    "messages": [
-      "두 분의 기운은 서로 보완하는 관계입니다.",
-      "함께 있을 때 더 큰 시너지가 발생합니다.",
-      "서로의 성향을 이해하는 것이 중요합니다."
-    ],
+    "intro_profile": "./assets/img/char/intro.png",
     "next_btn": "이제 시작해볼까요?"
   },
   "chapters": [
     {
       "id": 0,
-      "title": "가족운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=family",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=family-teller",
-      "chapter_overview": "${petName}와(과) 보호자님 사이의 특별한 인연과 서로가 서로에게 어떤 의미인지를 사주로 분석해 드립니다.",
-      "questionTemplate": "나는 ${petName}에게<br>어떤 존재일까?<br>부족한 것은 없을까?",
+      "title": "총운",
+      "icon": "./assets/img/char/ch1-icon.png",
+      "teller_icon": "./assets/img/char/ch1-teller.png",
+      "chapter_overview": "우리 ${petName}의 타고난 복과 전체적인 삶의 흐름, 그리고 우리 가족에게 가져다주는 특별한 기운을 분석해 드립니다.",
+      "questionTemplate": "${petName}의 타고난 복은<br>어느 정도일까요?<br>앞으로의 삶은 평탄할까요?",
       "desc_queries": [
-        { "query_id": 1, "template": "나는 ${petName}에게 <span class=\"highlight\">어떤 존재</span>일까?" },
-        { "query_id": 2, "template": "${petName}가 나에게 <span class=\"highlight\">바라는 점</span>은 무엇일까?" },
-        { "query_id": 3, "template": "우리가 더 행복한 가족이 되려면 <span class=\"highlight\">무엇이 필요</span>할까?" },
-        { "query_id": 4, "template": "${petName}와 나 사이의 <span class=\"highlight\">특별한 인연</span>의 끈은?" },
-        { "query_id": 5, "template": "가족으로서 함께 <span class=\"highlight\">조심해야 할 부분</span>은?" }
+        { "query_id": 1, "template": "타고난 <span class=\"highlight\">복</span>이 많은 아이인가요?" },
+        { "query_id": 2, "template": "전체적인 삶의 흐름이 <span class=\"highlight\">평탄한 편</span>인가요?" },
+        { "query_id": 3, "template": "이 아이가 우리 집에 온 것이 <span class=\"highlight\">운명적인 결합</span>인가요?" },
+        { "query_id": 4, "template": "삶에서 <span class=\"highlight\">가장 운이 좋은 시기</span>는 언제인가요?" },
+        { "query_id": 5, "template": "특별히 조심해야 할 <span class=\"highlight\">'액운'</span>이 끼는 시기가 있나요?" },
+        { "query_id": 6, "template": "아이의 삶에서 가장 큰 <span class=\"highlight\">성취나 기쁨</span>은 무엇일까요?" },
+        { "query_id": 7, "template": "이 아이가 가져다주는 <span class=\"highlight\">집안의 기운</span>은 어떤가요?" }
       ],
       "analysis_elements": [
-        "반려인의 일간(日干)과 ${petName}의 월지(月支) 관계",
-        "서로의 오행(五行) 합충(合沖) 분석",
-        "조후(調候)를 통한 정서적 안정감 확인"
+        "일간(日干) 및 월지(月支)의 조후 균형을 통한 생물학적 기질 및 건강의 기초 데이터 분석",
+        "용신(用神)의 건전성 및 지장간(地藏干) 투출 여부를 통한 복(福)의 발현 강도 및 잠재력 측정",
+        "대운(大運)과 세운(歲運)의 합충(合沖) 매트릭스를 활용한 생애 주기별 운세 변동성 계산"
       ],
       "faqs": [
         {
-          "question": "반려동물과의 관계를 사람처럼 부모-자식 관계로 봐도 되나요?",
-          "answer": "사주에서는 인성(印星)을 부모로 보지만, 반려동물과는 정서적 유대를 뜻하는 식상(食傷)이나 서로 보완하는 관계성도 함께 살펴봅니다. 단순히 부모 관계를 넘어선 특별한 인연의 조화를 분석해 드려요."
+          "question": "사람의 사주와 반려동물의 사주는 산출 방식이 다른가요?",
+          "answer": "네, 그렇습니다. 자연의 이치를 담은 사주명리의 기본 원리는 같지만, 반려동물의 시간은 사람보다 5~7배 빠르게 흐릅니다. 저희 서비스는 아이들의 생체 시간과 종별 특성을 반영한 독자적인 알고리즘을 사용합니다. 아이가 타고난 오행(五行)의 기운이 사람과는 다른 속도로 순환한다는 점을 고려하여, 우리 아이에게 딱 맞는 맞춤형 해석을 제공합니다."
         },
         {
-          "question": "${petName}가 저를 진짜 가족으로 생각하는지 사주로 알 수 있나요?",
-          "answer": "네, ${petName}의 사주에 나타난 관성(官星)이나 인성의 배치를 통해 보호자님을 '의지처'로 보는지, '친구'로 보는지 그 깊은 속마음을 엿볼 수 있습니다."
+          "question": "태어난 '시간'을 정확히 모르는데, 날짜만으로도 정확한 분석이 가능할까요?",
+          "answer": "걱정하지 마세요. 태어난 날의 기운인 일간(日干)은 아이의 본질적인 성향과 '나' 자신을 상징하는 가장 중요한 정보입니다. 시간 정보가 없더라도 연, 월, 일의 삼주(三柱) 분석만으로도 아이가 가진 기질과 환경, 그리고 다가올 운의 흐름을 충분히 읽어낼 수 있습니다. 더 깊은 속마음과 구체적인 행동 패턴은 본 분석 결과에서 확인하실 수 있습니다."
+        },
+        {
+          "question": "반려동물의 사주가 보호자의 운세에도 영향을 미치나요?",
+          "answer": "물론입니다. 사주명리에서는 나와 관계 맺은 대상과의 상호작용을 매우 중요하게 봅니다. 만약 보호자님에게 부족한 기운을 반려동물이 가득 채워주는 용신(用神)의 관계라면, 아이는 존재만으로도 보호자님에게 행운을 가져다주는 수호천사가 됩니다. 우리 아이가 나의 어떤 운을 지켜주고 있는지 분석 리포트에서 확인해보세요."
+        },
+        {
+          "question": "유기견/유기묘라 생일을 모를 경우, 입양일을 기준으로 봐도 되나요?",
+          "answer": "네, 아주 훌륭한 기준이 됩니다. 사주명리에서 운명은 세상과 첫 호흡을 나누는 순간 시작된다고 봅니다. 입양일은 아이가 보호자님의 가족으로 다시 태어난 제2의 생일과 같습니다. 과거의 아픔을 뒤로하고 보호자님과 함께 새롭게 그려나갈 운명의 지도를 입양일 기준으로 따뜻하게 풀이해 드립니다."
+        },
+        {
+          "question": "사주에 나온 '액운'은 보호자의 노력으로 충분히 바꿀 수 있는 부분인가요?",
+          "answer": "사주는 정해진 결말이 아니라, 미리 보고 대비할 수 있는 일기예보와 같습니다. 비가 온다는 예보를 들으면 우산을 챙기듯, '주의가 필요한 시기'를 미리 알면 보호자님의 세심한 케어로 충분히 건강하고 행복하게 보낼 수 있습니다. 운명은 결정된 것이 아니라, 보호자님의 사랑이라는 노력으로 더 아름답게 가꾸어갈 수 있는 길입니다."
         }
       ]
     },
     {
       "id": 1,
-      "title": "성격운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=personality",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=personality-teller",
-      "chapter_overview": "${petName}가(이) 타고난 본질적인 성향과 세상을 바라보는 방식을 오행과 십성을 통해 깊이 있게 들여다봅니다.",
-      "questionTemplate": "${petName}(은)는 다른 친구들과<br>어떻게 지낼까?<br>사회성이 좋을까?",
+      "title": "초년운",
+      "icon": "./assets/img/char/ch2-icon.png",
+      "teller_icon": "./assets/img/char/ch2-teller.png",
+      "chapter_overview": "우리 ${petName}의 입양 초기 적응력과 어린 시절 형성된 기질이 평생의 건강과 성격에 어떤 영향을 주는지 분석합니다.",
+      "questionTemplate": "입양 초기의 ${petName}(은)는<br>어떤 아이였을까요?<br>성격의 뿌리를 알아볼까요?",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}의 <span class=\"highlight\">타고난 성격</span>은 어떨까?" },
-        { "query_id": 2, "template": "<span class=\"highlight\">다른 친구들</span>과는 어떻게 어울릴까?" },
-        { "query_id": 3, "template": "${petName}가 가장 좋아하는 <span class=\"highlight\">소통 방식</span>은?" },
-        { "query_id": 4, "template": "스트레스를 받을 때 나타나는 <span class=\"highlight\">성격적 특징</span>은?" },
-        { "query_id": 5, "template": "${petName}의 <span class=\"highlight\">자존감</span>을 높여주는 방법은?" }
+        { "query_id": 1, "template": "입양 초기 <span class=\"highlight\">환경 적응력</span>이 좋은 편인가요?" },
+        { "query_id": 2, "template": "사회화 시기에 특별히 겪을 수 있는 <span class=\"highlight\">트라우마</span>가 있나요?" },
+        { "query_id": 3, "template": "어린 시절 형성된 <span class=\"highlight\">습관</span> 중 고치기 힘든 것이 있을까요?" },
+        { "query_id": 4, "template": "형제들 사이에서 <span class=\"highlight\">어떤 위치(서열)</span>일까요?" },
+        { "query_id": 5, "template": "<span class=\"highlight\">성장 속도</span>가 빠른 편인가요, 아니면 천천히 성숙하는 편인가요?" },
+        { "query_id": 6, "template": "<span class=\"highlight\">유치기(이갈이 등)</span>에 특별히 예민한 구석이 있나요?" },
+        { "query_id": 7, "template": "첫 보호자와의 <span class=\"highlight\">유대감</span>이 평생에 어떤 영향을 미치나요?" }
       ],
       "analysis_elements": [
-        "${petName}의 일간(日干) 기질 분석",
-        "사주 내의 비겁(比劫)과 식상(食傷)의 세력",
-        "십이운성(十二運星)을 통한 성격의 강약"
+        "연주(年柱)의 천간/지지를 통해 모태 환경 및 초기 유전 형질 분석",
+        "월주(月柱)의 육친(십신) 관계를 통한 사회화 시기 학습 능력 및 동배 관계 파악",
+        "인성(印星)의 유무 및 품질을 통한 모견 및 첫 보호자로부터의 돌봄의 질 측정"
       ],
       "faqs": [
         {
-          "question": "사람 성격 테스트처럼 반려동물도 사주로 성격이 딱 나오나요?",
-          "answer": "그럼요! 타고난 오행의 기운을 통해 내향적인지, 외향적인지, 혹은 질투가 많은지 등 ${petName}만의 독특한 개성을 아주 상세하게 파악할 수 있습니다."
+          "question": "반려동물의 '초년' 시기는 보통 몇 살인가요?",
+          "answer": "사주명리에서 초년은 태어난 해의 기둥인 연주(年柱)에 해당하며, 보통 태어나서 성견/성묘가 되기 전인 1~2세까지를 의미합니다. 사람보다 5~7배 빠른 아이들의 생체 시간을 고려할 때, 이 짧은 시기에 형성된 기질이 평생의 건강과 성격의 뿌리가 됩니다. 우리 아이가 타고난 초년의 기운이 어떤 색깔인지 분석 리포트에서 자세히 확인해보세요."
+        },
+        {
+          "question": "초년운이 좋지 않으면 성년이 되어서도 성격 결함이 생길 가능성이 높나요?",
+          "answer": "아닙니다. 초년운이 흐리다는 것은 '성격 결함'이 아니라, 아이가 조금 더 섬세한 케어를 필요로 하는 환경을 타고났다는 뜻입니다. 사주는 정해진 운명이 아니라 비가 오면 우산을 준비하게 해주는 일기예보와 같습니다. 보호자님의 따뜻한 사랑이라는 우산만 있다면, 아이는 그 시기를 지나며 오히려 더 깊은 유대감을 가진 아이로 성장할 수 있습니다."
+        },
+        {
+          "question": "사회화 시기에 겪는 트라우마가 사주상 '살(煞)'의 기운과 연관이 있나요?",
+          "answer": "네, 연관이 있을 수 있습니다. 외부의 강한 충격이나 예민함은 사주에서 기운끼리 부딪히는 충(沖)이나 날카로운 살(煞)의 작용으로 해석되기도 합니다. 하지만 이것은 무조건 나쁜 것이 아니라, 아이가 외부 자극을 남들보다 더 민감하게 받아들이는 특별한 기질을 가졌다는 신호입니다. 아이가 어떤 포인트에서 두려움을 느끼는지 미리 알면, 맞춤형 훈련으로 충분히 편안하게 만들어줄 수 있습니다."
         }
       ]
     },
     {
       "id": 2,
-      "title": "행동운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=behavior",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=behavior-teller",
-      "chapter_overview": "${petName}의 에너지가 어떻게 표출되는지, 그리고 특정 행동 뒤에 숨겨진 타고난 기질적 이유를 분석합니다.",
-      "questionTemplate": "${petName}의 타고난 체력은<br>어느 정도일까?<br>주의할 점은?",
+      "title": "중년운",
+      "icon": "./assets/img/char/ch3-icon.png",
+      "teller_icon": "./assets/img/char/ch3-teller.png",
+      "chapter_overview": "에너지가 가장 왕성한 황금기인 중년기! ${petName}의 자아 완성 과정과 활동력을 극대화할 수 있는 방법을 알아봅니다.",
+      "questionTemplate": "에너지가 넘치는 ${petName}의<br>황금기는 어떤 모습일까요?<br>행복한 일상을 위한 팁!",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}의 <span class=\"highlight\">활동량</span>은 어느 정도가 적당할까?" },
-        { "query_id": 2, "template": "스트레스를 받았을 때 <span class=\"highlight\">어떤 행동</span>을 할까?" },
-        { "query_id": 3, "template": "일상에서 <span class=\"highlight\">주의 깊게 살펴봐야 할 행동</span>은?" },
-        { "query_id": 4, "template": "${petName}에게 가장 효과적인 <span class=\"highlight\">산책이나 운동 방식</span>은?" },
-        { "query_id": 5, "template": "<span class=\"highlight\">행동 교정</span>이 필요할 때 주의해야 할 점은?" }
+        { "query_id": 1, "template": "에너지가 가장 넘치는 시기에 <span class=\"highlight\">사고를 칠 가능성</span>이 있나요?" },
+        { "query_id": 2, "template": "<span class=\"highlight\">활동량</span>을 충분히 채워주지 못하면 어떤 스트레스를 받나요?" },
+        { "query_id": 3, "template": "이 시기에 아이가 가장 원하는 <span class=\"highlight\">'낙'</span>은 무엇인가요?" },
+        { "query_id": 4, "template": "<span class=\"highlight\">외부 활동(산책, 외출)</span>에서 얻는 운이 좋은 편인가요?" },
+        { "query_id": 5, "template": "다른 <span class=\"highlight\">동물 친구들</span>과의 관계가 활발해지는 시기인가요?" },
+        { "query_id": 6, "template": "<span class=\"highlight\">독립심</span>이 강해지는 시기인가요, 아니면 의존도가 높아지나요?" },
+        { "query_id": 7, "template": "지능이나 <span class=\"highlight\">학습 능력</span>이 가장 발달하는 때는 언제인가요?" }
       ],
       "analysis_elements": [
-        "사주 내 목(木)과 화(火)의 기운(에너지 레벨)",
-        "신살(神殺) 중 역마살이나 지살의 유무",
-        "일지(日支)의 충과 합에 따른 행동 변화"
+        "일주(日柱)의 구성을 통해 자아 정체성, 독립적 활동력, 신체 건강 상태 분석",
+        "월지(月支)와 일지의 형충회합을 통한 사회적 환경 내 상호작용 분석",
+        "식상(食傷)과 재성(財星)의 세력을 측정하여 에너지 발산 욕구 및 소유욕 파악"
       ],
       "faqs": [
         {
-          "question": "갑자기 이상한 행동을 하는 것도 사주에 나오나요?",
-          "answer": "특정 시기의 운(運) 흐름에 따라 예민해지거나 에너지가 넘칠 수 있습니다. ${petName}의 타고난 기질과 현재 운을 비교하여 행동의 이유를 분석해 드립니다."
+          "question": "반려동물의 '중년' 시기는 보통 몇 살인가요?",
+          "answer": "사람보다 5~7배 빠른 반려동물의 생체 시간을 고려할 때, 중년은 보통 3세에서 6세 사이의 시기를 의미합니다. 사주명리에서는 이를 인생의 허리이자 '나' 자신이 가장 강하게 드러나는 일주(日柱)의 시기로 봅니다. 이 때는 아이의 자아가 완성되고 활동력이 가장 왕성해지는 황금기이므로, 이 시기의 에너지를 어떻게 쓰느냐가 노년의 건강까지 결정짓습니다."
+        },
+        {
+          "question": "이 시기에 갑자기 성격이 변하거나 사나워지는 것도 사주 흐름의 영향인가요?",
+          "answer": "네, 충분히 그럴 수 있습니다. 사람도 사회생활을 하며 스트레스를 받듯, 아이들의 운에서도 편관(偏官)처럼 나를 강하게 누르는 기운이 들어오거나 지지에서 충(沖)이 발생하면 예민해질 수 있습니다. 이는 '나쁜 성격'이 아니라, 아이가 어른이 되면서 자기주장이 생기고 환경 변화에 민감하게 반응하는 과정이니 보호자님의 따뜻한 이해가 필요합니다."
+        },
+        {
+          "question": "산책이나 외부 활동이 아이의 부족한 기운을 채워주는 개운법이 될까요?",
+          "answer": "아주 훌륭한 개운법입니다. 사주명리는 결국 자연의 조화를 맞추는 학문이기에, 부족한 오행(五行)을 자연 속에서 채우는 것이 최고의 처방입니다. 가령 화(火)가 부족한 아이에게 따스한 햇볕 산책은 활력을 주고, 토(土)가 필요한 아이에게 흙 냄새를 맡는 노즈워크는 정서적 안정을 줍니다. 우리 아이에게 딱 필요한 맞춤형 산책 시간과 장소는 본 분석에서 확인하실 수 있습니다."
         }
       ]
     },
     {
       "id": 3,
-      "title": "궁합운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=harmony",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=harmony-teller",
-      "chapter_overview": "두 분의 사주 에너지가 만나서 만드는 시너지는 무엇인지, 조화로운 공존을 위한 핵심 포인트를 짚어드립니다.",
-      "questionTemplate": "두 분의 궁합은<br>어떨까요?<br>서로에게 어떤 영향을 줄까요?",
+      "title": "노년운",
+      "icon": "./assets/img/char/ch4-icon.png",
+      "teller_icon": "./assets/img/char/ch4-teller.png",
+      "chapter_overview": "휴식의 계절인 노년기에 ${petName}가 가장 평온하게 지낼 수 있는 환경과 마음가짐을 분석합니다.",
+      "questionTemplate": "${petName}의 노후는<br>어떤 모습일까요?<br>마지막까지 평온하게 지내려면?",
       "desc_queries": [
-        { "query_id": 1, "template": "두 분의 에너지는 어떻게 <span class=\"highlight\">조화</span>를 이룰까?" },
-        { "query_id": 2, "template": "함께 있을 때 서로에게 어떤 <span class=\"highlight\">행운</span>을 줄까?" },
-        { "query_id": 3, "template": "서로의 부족한 기운을 어떻게 <span class=\"highlight\">채워줄 수</span> 있을까?" },
-        { "query_id": 4, "template": "갈등이 생겼을 때 가장 현명한 <span class=\"highlight\">화해 방법</span>은?" },
-        { "query_id": 5, "template": "서로의 궁합을 더 좋게 만드는 <span class=\"highlight\">풍수적 팁</span>은?" }
+        { "query_id": 1, "template": "노년기에 접어들었을 때 성격이 <span class=\"highlight\">순해지나요, 예민해지나요</span>?" },
+        { "query_id": 2, "template": "마지막까지 평온하게 지낼 수 있는 <span class=\"highlight\">최적의 환경</span>은 무엇인가요?" },
+        { "query_id": 3, "template": "사별의 과정에서 아이가 겪게 될 <span class=\"highlight\">심리적 상태</span>는 어떨까요?" },
+        { "query_id": 4, "template": "노후에 고집이 세지는 <span class=\"highlight\">'노집'</span>이 생길 사주인가요?" },
+        { "query_id": 5, "template": "아이가 노년에 <span class=\"highlight\">가장 의지하게 될 가족</span>은 누구인가요?" },
+        { "query_id": 6, "template": "생의 마무리가 <span class=\"highlight\">평화롭고 복이 있는 편</span>인가요?" }
       ],
       "analysis_elements": [
-        "반려인과 ${petName}의 일간(日干) 합충",
-        "서로에게 필요한 오행(用神)의 상생 관계",
-        "서로의 띠(年支)를 통한 기본적인 유대감"
+        "시주(時柱)의 천간/지지 구성을 통해 말년 건강 및 보호자와의 이별 과정 분석",
+        "십이운성(12 Stages) 중 사(死), 묘(墓), 절(絶)을 통한 생체 에너지 소멸 속도 예측",
+        "시지(時支)와 일지(日支)의 형충(刑沖)을 통한 급성 질환 및 사고 발생 확률 측정"
       ],
       "faqs": [
         {
-          "question": "반려동물과 저의 궁합이 안 좋으면 어떡하죠?",
-          "answer": "완벽한 궁합보다는 서로 부족한 점을 어떻게 채워주느냐가 더 중요합니다. 사주 분석을 통해 서로의 기운을 조화롭게 다스리는 방법을 알려드릴게요."
+          "question": "반려동물의 '노년' 시기는 보통 몇 살인가요?",
+          "answer": "사람보다 5~7배 빠른 반려동물의 시간을 감안할 때, 대략 7세 이후를 노년의 시작으로 봅니다. 사주명리에서는 인생을 4단계(연·월·일·시)로 나누는데, 노년은 하루를 마무리하고 쉬러 들어가는 시주(時柱)의 시기에 해당합니다. 겨울이 씨앗을 품고 조용히 봄을 기다리듯, 우리 아이가 활동성을 줄이고 내면의 평온을 찾는 자연스러운 휴식의 계절로 이해해 주시면 됩니다."
+        },
+        {
+          "question": "노년기에 고집이 세지는 이유가 단순히 노화 때문인가요, 아니면 타고난 기운 때문인가요?",
+          "answer": "노화로 인한 불안감도 있지만, 사주학적으로는 아이 본연의 기질인 일간(日干)의 성향이 가장 순수하게 드러나는 시기이기 때문입니다. 특히 금(金)의 기운이 강한 아이는 바위처럼 단단한 소신이 생기고, 토(土)가 강한 아이는 움직이지 않으려는 성향이 강해집니다. 이는 '고집'이라기보다, 에너지를 아끼고 자신을 지키려는 본능적인 방어기제가 사주 글자의 특성대로 발현되는 것입니다."
+        },
+        {
+          "question": "사주를 통해 아이가 마지막까지 보호자 곁에서 평온하게 떠날 복이 있는지 알 수 있나요?",
+          "answer": "네, 어느 정도 가늠할 수 있습니다. 사주의 마지막 기둥인 시주(時柱)는 아이의 만년 운과 자식(보호자님)과의 관계를 보여줍니다. 이 자리에 길신(吉神)이 있거나 에너지가 순환하는 구조라면 평온한 이별을 기대할 수 있습니다. 설령 흐름이 좋지 않더라도, 미리 알면 의료적 처치나 케어 방식을 조절하여 아이가 가장 편안한 길을 갈 수 있도록 도울 수 있습니다."
+        },
+        {
+          "question": "사주상 노년운이 약하다면, 보호자가 어떤 환경을 조성해 주는 것이 가장 좋은가요?",
+          "answer": "사주는 정해진 운명이 아니라, 비가 오면 우산을 준비하게 해주는 일기예보와 같습니다. 사주가 차갑다면 따뜻한 조명과 의류로 화(火)의 기운을 보충해주고, 기운이 너무 빠져나가는 신약(身弱)한 상태라면 영양가 있는 식단으로 기운을 채워주세요. 보호자님의 세심한 환경 조성이야말로 아이의 부족한 운을 채워주는 최고의 용신(用神), 즉 수호신입니다."
         }
       ]
     },
     {
       "id": 4,
-      "title": "학업운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=education",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=education-teller",
-      "chapter_overview": "${petName}의 인지적 수용력과 학습 태도를 분석하여, 가장 효과적으로 소통하고 교육하는 방법을 찾아봅니다.",
-      "questionTemplate": "${petName}의 학습 능력과<br>재능은 어느 정도일까요?<br>어떻게 키워주면 좋을까요?",
+      "title": "성격운",
+      "icon": "./assets/img/char/ch5-icon.png",
+      "teller_icon": "./assets/img/char/ch5-teller.png",
+      "chapter_overview": "${petName}의 타고난 성품과 속마음, 그리고 보호자님과의 더 깊은 교감을 위한 성격적 특징을 분석합니다.",
+      "questionTemplate": "${petName}(은)는 어떤 성격일까요?<br>아이의 속마음을<br>들여다볼까요?",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}는 어떤 분야에 <span class=\"highlight\">천재성</span>을 보일까?" },
-        { "query_id": 2, "template": "훈련이나 교육을 할 때 가장 <span class=\"highlight\">효과적인 방법</span>은?" },
-        { "query_id": 3, "template": "${petName}가 배우는 것을 <span class=\"highlight\">즐거워하게</span> 하려면?" },
-        { "query_id": 4, "template": "집중력이 떨어질 때 <span class=\"highlight\">다시 높여주는</span> 방법은?" },
-        { "query_id": 5, "template": "타고난 지능을 일상에서 어떻게 <span class=\"highlight\">활용</span>하면 좋을까?" }
+        { "query_id": 1, "template": "타고난 기질이 <span class=\"highlight\">외향적인가요, 내향적인가요</span>?" },
+        { "query_id": 2, "template": "<span class=\"highlight\">소심해서 겁이 많은 편</span>인가요, 아니면 <span class=\"highlight\">용맹한 편</span>인가요?" },
+        { "query_id": 3, "template": "<span class=\"highlight\">질투심이나 소유욕</span>이 강한 성격인가요?" },
+        { "query_id": 4, "template": "사람의 감정을 잘 읽고 <span class=\"highlight\">공감하는 능력</span>이 있나요?" },
+        { "query_id": 5, "template": "특정 소리나 물체에 <span class=\"highlight\">예민하게 반응하는 기운</span>이 있나요?" },
+        { "query_id": 6, "template": "<span class=\"highlight\">고집이 세서 훈련이 어려운</span> 타입인가요?" },
+        { "query_id": 7, "template": "<span class=\"highlight\">애교가 많고 사랑받고 싶어 하는 욕구</span>가 강한가요?" }
       ],
       "analysis_elements": [
-        "사주 내 인성(印星)의 발달 정도(수용력)",
-        "식상(食傷)의 표출 방식(표현력 및 학습 태도)",
-        "문창귀인 등 지적 능력 관련 신살"
+        "일간(日干)의 오행 속성 및 음양 구분을 통한 자아의 기본 성향 분석",
+        "십신(十神) 구조(특히 식상, 관성, 인성)를 통한 행동 양식 및 통제 순응도 분석",
+        "지지(地支)의 형충회합을 통한 심리적 안정도 및 예민함 측정"
       ],
       "faqs": [
         {
-          "question": "말을 잘 안 듣는 것도 머리가 나빠서 그런 건가요?",
-          "answer": "아니요! 머리가 나쁜 게 아니라 사주상 고집이 강하거나 자기주장이 뚜렷한 시기일 수 있습니다. ${petName}의 학습 스타일을 알면 훈련이 훨씬 쉬워집니다."
+          "question": "유독 겁이 많고 예민한 아이는 사주상 어떤 기운이 부족해서 그런 건가요?",
+          "answer": "겁이 많은 게 아니라, 감수성이 남들보다 풍부하게 타고난 경우가 많습니다. 사주에서 반짝이는 보석(辛)의 기운이나 맑은 샘물(癸)의 기운을 가진 아이들은 아주 작은 자극도 섬세하게 감지하거든요. 우리 아이가 어떤 포인트에서 불안을 느끼는지, 그 섬세한 마음을 지켜줄 맞춤형 솔루션을 분석 결과에서 확인해 보세요."
+        },
+        {
+          "question": "보호자의 말을 잘 듣는 '충성심'도 사주에 타고나는 성품인가요?",
+          "answer": "네, 아이가 보내는 무한한 신뢰도 사주 속 오행(五行)에 숨어 있습니다. 흔들리지 않는 흙(土)의 기운이나 의리를 지키는 금(金)의 기운이 강한 아이들은 타고난 우직함을 지닙니다. 특히 규칙을 따르는 것을 편안해하는 관성(官星)의 기운이 있다면, 보호자님과의 교감을 최고의 기쁨으로 여길 거예요."
+        },
+        {
+          "question": "분리불안이 심한 아이들의 사주에는 공통적인 특징이 있나요?",
+          "answer": "보호자님을 '엄마'처럼 의지하는 인성(印星)의 기운이 강하거나, 사주가 신약(身弱)하여 보호자님의 사랑을 간절히 필요로 할 때 불안이 나타나곤 합니다. 또는 사주가 너무 '차가워서' 보호자님이라는 따뜻한 불(火)의 온기를 본능적으로 찾는 경우일 수도 있습니다. 아이의 불안이 단순한 집착인지, 생존의 본능인지 그 깊은 속사정을 알아보세요."
         }
       ]
     },
     {
       "id": 5,
-      "title": "직업운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=job",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=job-teller",
-      "chapter_overview": "${petName}가(이) 사회적 관계 속에서 가장 빛날 수 있는 역할과 타고난 재능이 발휘되는 분야를 제안합니다.",
-      "questionTemplate": "${petName}와 잘 어울리는<br>역할은 무엇일까요?<br>어떤 분야에서 빛날까요?",
+      "title": "건강운",
+      "icon": "./assets/img/char/ch6-icon.png",
+      "teller_icon": "./assets/img/char/ch6-teller.png",
+      "chapter_overview": "오행의 기운으로 보는 ${petName}의 신체적 강점과 약점, 그리고 건강한 삶을 위한 맞춤 예방법을 제안합니다.",
+      "questionTemplate": "${petName}의 타고난 체질은<br>어떨까요?<br>주의할 건강 포인트!",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}의 기질에 꼭 맞는 <span class=\"highlight\">역할</span>은 무엇일까?" },
-        { "query_id": 2, "template": "사회적으로 활동한다면 어떤 <span class=\"highlight\">모습</span>이 어울릴까?" },
-        { "query_id": 3, "template": "${petName}가 <span class=\"highlight\">성취감</span>을 느낄 수 있는 활동은?" },
-        { "query_id": 4, "template": "다른 사람들에게 어떤 <span class=\"highlight\">인상</span>을 주는 타입일까?" },
-        { "query_id": 5, "template": "미래에 ${petName}와 함께 <span class=\"highlight\">도전</span>해볼 만한 활동은?" }
+        { "query_id": 1, "template": "타고나기를 <span class=\"highlight\">튼튼하게 타고난 체질</span>인가요?" },
+        { "query_id": 2, "template": "오행상 <span class=\"highlight\">어떤 장기(소화기, 호흡기, 관절 등)</span>가 약한가요?" },
+        { "query_id": 3, "template": "<span class=\"highlight\">식탐</span>이 많아 비만을 조심해야 하는 사주인가요?" },
+        { "query_id": 4, "template": "스트레스가 <span class=\"highlight\">신체 질환</span>으로 바로 이어지는 예민한 체질인가요?" },
+        { "query_id": 5, "template": "유전적으로 조심해야 할 <span class=\"highlight\">고질병의 기운</span>이 보이나요?" },
+        { "query_id": 6, "template": "<span class=\"highlight\">사고수(골절, 삼킴 등)</span>가 잦은 사주인가요?" },
+        { "query_id": 7, "template": "<span class=\"highlight\">계절 변화</span>에 따라 컨디션 기복이 심한 편인가요?" },
+        { "query_id": 8, "template": "건강을 위해 피해야 하거나 섭취하면 좋은 <span class=\"highlight\">기운의 음식</span>이 있나요?" }
       ],
       "analysis_elements": [
-        "사주 내 관성(官星)의 흐름(사회적 역할)",
-        "재성(財星)의 유무에 따른 실리적 성향",
-        "월지(月支)를 통한 타고난 재능 발휘 분야"
+        "오행(Five Elements)의 태과 및 불급 분석을 통한 특정 장기 질환 예측",
+        "조후(월지 기준 온도/습도) 분석을 통한 체온 조절 능력 및 계절성 질환 감수성 파악",
+        "형충(刑沖) 및 백호살(白虎殺) 분석을 통한 수술수, 사고수, 급성 질환 리스크 측정"
       ],
       "faqs": [
         {
-          "question": "우리 아이에게 딱 맞는 '직업'이 진짜 있나요?",
-          "answer": "실제 직업을 갖는 건 아니지만, 모델견이 어울리는지, 집을 지키는 가디언이 어울리는지 등 ${petName}가 가장 행복해할 역할을 찾아낼 수 있습니다."
+          "question": "사주 오행(목화토금수)으로 아이가 특히 취약한 신체 부위를 알 수 있나요?",
+          "answer": "네, 알 수 있습니다. 아이가 타고난 오행(五行)의 기운이 신체 기관과 밀접하게 연결되어 있기 때문입니다. 예를 들어 목(木)은 간과 신경계, 화(火)은 심장과 정신, 토(土)은 위장과 소화기, 금(金)은 폐와 대장/피부, 수(水)은 신장과 생식기 건강을 상징합니다. 사주 원국에서 특정 오행이 너무 많거나 다른 기운과 부딪혀 손상될 때, 해당 장기가 약해질 수 있다는 신호이니 미리 체크해 보세요."
+        },
+        {
+          "question": "사람처럼 반려동물에게도 건강이 급격히 나빠지는 '삼재' 같은 시기가 있나요?",
+          "answer": "아이들의 시간은 사람보다 5~7배 빠르기에, 나쁜 운의 흐름도 더 압축적으로 나타날 수 있습니다. 사주에서 기운끼리 강하게 부딪히는 충(沖)이나, 사고 및 수술수를 의미하는 형(刑)의 기운이 들어올 때가 바로 주의해야 할 시기입니다. 이 시기는 정해진 불행이 아니라, 건강검진을 평소보다 꼼꼼히 챙기라는 안전 경보와 같으니 보호자님의 케어로 충분히 이겨낼 수 있습니다."
+        },
+        {
+          "question": "식탐이 너무 많거나 반대로 사료를 잘 안 먹는 사주가 있나요?",
+          "answer": "네, 아이의 식성도 사주 속 글자들의 조화로 설명할 수 있습니다. 먹고사는 힘을 뜻하는 식신(食神)의 기운이 잘 발달되어 있거나, 소화기를 담당하는 토(土)의 기운이 튼튼하면 식복이 좋고 잘 먹습니다. 반대로 사주가 너무 차갑거나 뜨거워 토(土)의 기운이 메마르거나, 식신의 기운이 약하다면 입맛이 까다로울 수 있습니다. 우리 아이가 왜 밥투정을 하는지, 그 속사정을 이해하면 더 건강한 식단을 챙겨줄 수 있습니다."
+        },
+        {
+          "question": "아이의 건강을 위해 사주에 부족한 기운을 보완해 줄 수 있나요?",
+          "answer": "물론입니다. 사주명리는 차가우면 따뜻하게, 더우면 시원하게 해주는 조후(調候)의 균형을 맞추는 것이 핵심입니다. 예를 들어 사주가 너무 차가운 아이에게는 따뜻한 색감의 옷이나 화(火)의 기운을 가진 액세서리로, 기운이 너무 강해 설기가 필요한 아이에게는 산책과 같은 활동으로 부족함을 채워줄 수 있습니다. 아이에게 꼭 필요한 행운의 아이템과 생활 습관을 분석 리포트에서 제안해 드립니다."
         }
       ]
     },
     {
       "id": 6,
-      "title": "재물운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=money",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=money-teller",
-      "chapter_overview": "${petName}와(과) 함께함으로써 보호자님의 삶에 찾아오는 풍요로움과 경제적 시너지를 분석합니다.",
-      "questionTemplate": "${petName}와 함께하면<br>재물운이 좋아질까요?<br>풍요로운 삶을 살 수 있을까요?",
+      "title": "보호자운",
+      "icon": "./assets/img/char/ch7-icon.png",
+      "teller_icon": "./assets/img/char/ch7-teller.png",
+      "chapter_overview": "보호자님과 ${petName}의 특별한 인연과 상호 운세 영향력, 그리고 더 행복한 동행을 위한 궁합을 분석합니다.",
+      "questionTemplate": "보호자님과 ${petName}(은)는<br>어떤 인연일까요?<br>함께하면 운이 좋아질까요?",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}가 우리 집에 어떤 <span class=\"highlight\">금전운</span>을 가져올까?" },
-        { "query_id": 2, "template": "함께 풍요로운 삶을 살기 위한 <span class=\"highlight\">팁</span>은?" },
-        { "query_id": 3, "template": "${petName}와 함께할 때 시너지가 나는 <span class=\"highlight\">경제적 기운</span>은?" },
-        { "query_id": 4, "template": "재물운을 높여주는 ${petName}의 <span class=\"highlight\">전용 아이템</span>은?" },
-        { "query_id": 5, "template": "경제적 안정을 위해 반려인이 실천해야 할 <span class=\"highlight\">작은 습관</span>은?" }
+        { "query_id": 1, "template": "보호자와 <span class=\"highlight\">어떤 인연</span>으로 얽혀 있나요?" },
+        { "query_id": 2, "template": "아이가 보호자를 <span class=\"highlight\">'엄마/아빠'</span>로 보나요, 아니면 <span class=\"highlight\">'친구'</span>로 보나요?" },
+        { "query_id": 3, "template": "이 아이를 만난 후 보호자의 <span class=\"highlight\">운세가 좋아지는 편</span>인가요?" },
+        { "query_id": 4, "template": "아이가 특별히 더 잘 따르거나 좋아하는 <span class=\"highlight\">가족의 특징</span>이 있나요?" },
+        { "query_id": 5, "template": "보호자가 아이에게 주는 <span class=\"highlight\">사랑을 충분히 느끼고</span> 있나요?" },
+        { "query_id": 6, "template": "보호자가 아이를 위해 <span class=\"highlight\">특히 조심해야 할 부분</span>이 있나요?" }
       ],
       "analysis_elements": [
-        "반려인의 재성(財星)과 ${petName}의 기운 합치",
-        "${petName}가 가진 재물 창고(財庫)의 유무",
-        "서로의 사주가 금전적 기회(복록)를 만드는지 확인"
+        "일지(日支) 대조 및 상호 오행 분석을 통한 정서적 유대감 및 생활 궁합 측정",
+        "반려동물 원국의 인성(印星) 및 비겁(比劫) 분포를 통한 보호자 인식 포지셔닝 분석",
+        "상호 용신(用神) 일치도 분석을 통한 보호자의 운세 증진 여부 파악"
       ],
       "faqs": [
         {
-          "question": "반려동물이 정말 '복덩이'가 될 수 있나요?",
-          "answer": "네, 반려동물의 기운이 보호자님의 부족한 재물운을 보완해주거나 운의 흐름을 틔워주는 '복의 근원'이 되는 경우가 사주상으로 분명히 존재합니다."
+          "question": "반려동물과 보호자 사이에도 사주 궁합이 존재하나요?",
+          "answer": "네, 존재합니다. 사주명리에서는 나에게 부족한 기운을 상대방이 채워줄 때 서로에게 더없는 행운을 주는 용신(用神)의 관계가 성립된다고 봅니다. 아이가 보호자님의 부족한 오행을 채워주는 수호천사인지, 혹은 보호자님이 아이의 뜨거운 사주를 식혀주는 시원한 그늘인지, 서로가 서로에게 어떤 행운의 열쇠가 되어주는지 확인해보세요."
+        },
+        {
+          "question": "사주상 보호자와 반려동물이 상극이라면 어떻게 해야하나요?",
+          "answer": "걱정하지 마세요. 상극은 '나쁜 사이'가 아니라 서로를 다듬어주는 성장의 관계일 수 있습니다. 만약 나무(木)와 쇠(金)처럼 부딪히는 관계라면, 중간에서 물(水)의 기운으로 부드럽게 이어주는 통관(通關)의 지혜를 발휘하면 됩니다. 산책 코스나 인테리어 소품 등 우리 사이를 끈끈하게 이어줄 맞춤형 개운 아이템을 리포트에서 제안해 드립니다."
+        },
+        {
+          "question": "보호자의 운세가 반려동물의 건강이나 기운에도 영향을 미치나요?",
+          "answer": "아주 깊이 연결되어 있습니다. 사주에서 운(運)은 자동차가 달리는 도로와 같은데, 반려동물에게 보호자님은 세상의 전부이자 거대한 환경 그 자체이기 때문입니다. 보호자님의 운세 흐름이 좋을 때 아이도 더 건강하고 행복할 수 있으니, 나의 기운이 아이에게 어떤 우산이 되어주고 있는지 꼭 점검해 보세요."
         }
       ]
     },
     {
       "id": 7,
-      "title": "건강운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=health",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=health-teller",
-      "chapter_overview": "타고난 체질적 강점과 약점을 파악하여, ${petName}와(과) 오랫동안 건강하게 함께하기 위한 맞춤 가이드를 드립니다.",
-      "questionTemplate": "${petName}의 건강을 위해<br>주의해야 할 점은 무엇일까요?<br>활기찬 일상을 보내려면?",
+      "title": "대운과 세운",
+      "icon": "./assets/img/char/ch8-icon.png",
+      "teller_icon": "./assets/img/char/ch8-teller.png",
+      "chapter_overview": "현재 ${petName}에게 흐르는 시간의 에너지를 읽어, 변화가 필요한 시기와 조심해야 할 타이밍을 알려드립니다.",
+      "questionTemplate": "지금은 ${petName}에게<br>어떤 시기일까요?<br>운의 흐름을 읽어보아요.",
       "desc_queries": [
-        { "query_id": 1, "template": "${petName}가 타고난 <span class=\"highlight\">체질과 주의해야 할 부분</span>은?" },
-        { "query_id": 2, "template": "활기찬 일상을 위해 꼭 챙겨야 할 <span class=\"highlight\">건강 포인트</span>은?" },
-        { "query_id": 3, "template": "노년기까지 건강하게 지내기 위한 <span class=\"highlight\">비결</span>은?" },
-        { "query_id": 4, "template": "계절별로 특히 주의해야 할 <span class=\"highlight\">질환</span>은?" },
-        { "query_id": 5, "template": "스트레스가 건강에 미치는 <span class=\"highlight\">영향과 관리법</span>은?" }
+        { "query_id": 1, "template": "현재 아이가 <span class=\"highlight\">심리적으로 불안하거나 정체된 시기</span>인가요?" },
+        { "query_id": 2, "template": "<span class=\"highlight\">새로운 가족(아기, 새 반려동물)</span>이 생기기에 좋은 시기인가요?" },
+        { "query_id": 3, "template": "<span class=\"highlight\">이별수나 사고수</span>를 특별히 조심해야 시기가 있나요?" },
+        { "query_id": 4, "template": "아이의 운이 급격히 상승하여 <span class=\"highlight\">컨디션이 최상인 시기</span>는 언제인가요?" },
+        { "query_id": 5, "template": "<span class=\"highlight\">환경 변화(이사 등)</span>를 주었을 때 아이가 잘 적응할 수 있는 해인가요?" }
       ],
       "analysis_elements": [
-        "사주 오행의 균형(신체 장기별 강약)",
-        "금(金)과 수(水)의 기운을 통한 면역력 분석",
-        "백호살, 괴강살 등 급격한 건강 변화 가능성"
+        "세운(歲運)의 천간/지지를 분석하여 반려동물의 한 해 운세 흐름 파악",
+        "대운(大運)의 지지를 통한 생애 단계 및 배경 환경 변화 분석",
+        "월운(月運) 및 일진 분석을 통한 특정 이벤트(수술, 이사 등) 날짜 택일 활용"
       ],
       "faqs": [
         {
-          "question": "병원 검진 외에 사주로 건강을 보는 게 의미가 있나요?",
-          "answer": "사주는 타고난 체질적 약점을 미리 알려줍니다. 예를 들어 '물(水)' 기운이 부족하면 신장이나 비뇨기계를 미리 관리하는 식의 맞춤 예방 가이드를 드려요."
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "title": "시기운",
-      "icon": "https://api.dicebear.com/7.x/bottts/svg?seed=timing",
-      "teller_icon": "https://api.dicebear.com/7.x/bottts/svg?seed=timing-teller",
-      "chapter_overview": "현재 흐르는 운의 기운을 읽어, 지금 이 순간 ${petName}에게 가장 필요한 변화와 기회가 무엇인지 알려드립니다.",
-      "questionTemplate": "지금은 어떤 시기일까요?<br>${petName}와 어떤 변화를<br>준비해야 할까요?",
-      "desc_queries": [
-        { "query_id": 1, "template": "지금 이 시기에 <span class=\"highlight\">가장 집중</span>해야 할 것은?" },
-        { "query_id": 2, "template": "${petName}의 삶에서 현재 <span class=\"highlight\">어떤 변화</span>가 일어나고 있을까?" },
-        { "query_id": 3, "template": "앞으로 다가올 <span class=\"highlight\">중요한 기회</span>와 운의 흐름은?" },
-        { "query_id": 4, "template": "중요한 결정을 내리기에 좋은 <span class=\"highlight\">타이밍</span>은 언제일까?" },
-        { "query_id": 5, "template": "현재의 운을 긍정적으로 바꾸기 위한 <span class=\"highlight\">행동</span>은?" }
-      ],
-      "analysis_elements": [
-        "현재 대운(大運)과 세운(歲運)의 흐름",
-        "올해의 천간/지지와 ${petName} 사주의 상생상극",
-        "특정 월별 기운 변화(월운)"
-      ],
-      "faqs": [
+          "question": "사람의 '대운'처럼 반려동물의 운세가 크게 바뀌는 주기가 있나요?",
+          "answer": "네, 있습니다. 사주명리에서 '대운(大運)'은 10년마다 바뀌는 인생의 거대한 계절이자, 운명이라는 자동차가 달리는 도로와 같습니다. 다만, 사람보다 5~7배 빠른 생체 시간을 사는 반려동물에게 10년은 너무 긴 시간이죠. 우리 아이들은 훨씬 더 빠른 주기로 운의 흐름(대운)이 바뀝니다. 아이가 지금 달리고 있는 도로가 흙길인지 고속도로인지, 그 압축된 시간의 흐름을 분석 리포트에서 확인해 보세요."
+        },
         {
-          "question": "지금이 이사나 입양 같은 큰 변화를 주기에 좋을 때인가요?",
-          "answer": "운의 흐름이 불안정한 시기에는 안정을 취하는 게 좋고, 상승기에는 새로운 변화가 큰 복이 됩니다. 현재 ${petName}에게 가장 유리한 타이밍을 집어드릴게요."
+          "question": "올해 유독 사고수가 있는 해라면, 보호자가 무엇을 가장 조심해야 할까요?",
+          "answer": "'사고수'는 보통 지지(地支)끼리 강하게 부딪히는 충(沖)이나, 조정과 수술을 의미하는 형(刑)의 기운이 들어올 때 발생합니다. 이것은 정해진 불행이 아니라, \"올해는 길이 미끄러우니 속도를 줄이라\"는 안전 경보와 같습니다. 이 시기에는 산책 줄을 더 단단히 잡거나 무리한 운동을 피하는 세심한 케어만으로도 충분히 아이를 지켜줄 수 있습니다. 우리 아이가 올해 특히 조심해야 할 월(月)과 행동 수칙을 미리 챙겨주세요."
+        },
+        {
+          "question": "아이가 갑자기 무기력해지는 '슬럼프' 시기가 나타나나요?",
+          "answer": "네, 그렇습니다. 아이의 활동력과 먹고사는 본능을 관장하는 식신(食神)의 기운이 약해지거나 공격받을 때, 아이는 이유 없이 축 처질 수 있습니다. 또는 물과 불처럼 서로 반대되는 기운이 부딪혀(수극화 등) 에너지가 소모되는 시기일 수도 있습니다. 이럴 때는 억지로 활동을 시키기보다 편안한 휴식을 선물하는 것이 최고의 보약입니다. 아이의 바이오리듬이 언제 다시 상승 곡선을 그릴지 예측해 드립니다."
         }
       ]
     }

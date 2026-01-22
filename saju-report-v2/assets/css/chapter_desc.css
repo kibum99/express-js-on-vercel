@@ -1,44 +1,49 @@
-/* assets/css/chapter_desc.css */
+/* Chapter Description */
+
+/* Keywords List */
 #keywords-list li {
     position: relative;
-    padding-left: 0; /* Remove padding as we don't have dots anymore */
+    padding-left: 0;
+    font-family: 'GangwonEducationModuche', sans-serif;
+    font-weight: 700;
 }
 
-/* Number emphasis */
+/* Query Number */
 .query-number {
-    color: #ef4444;
+    color: var(--color-primary);
     font-weight: 900;
     margin-right: 8px;
     font-size: 1.1em;
 }
 
 ol.space-y-4 li {
-    color: #1a1a1a; /* 글자색 명시 */
+    color: var(--color-text);
 }
 
-/* Analysis Elements List */
+/* Analysis List */
 #analysis-list li {
     display: flex;
     align-items: flex-start;
-    font-weight: 500;
-    color: #374151;
+    font-family: 'GangwonEducationModuche', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-muted);
 }
 
 #analysis-list li::before {
     content: '✓';
     margin-right: 12px;
-    color: #ef4444;
+    color: var(--color-primary);
     font-weight: 900;
 }
 
-/* Chat UI Styles */
+/* Chat UI */
 .faq-chat-container {
     display: flex;
     flex-direction: column;
-    background-color: #f3f4f6;
+    background-color: var(--color-background);
     padding: 24px 16px;
-    border-radius: 24px;
-    border: 1px solid #e5e7eb;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
     min-height: 120px;
     transition: all 0.3s ease;
     position: relative;
@@ -46,13 +51,13 @@ ol.space-y-4 li {
 }
 
 .faq-chat-container.has-content {
-    background-color: #f8fafc;
+    background-color: var(--color-background-alt);
     justify-content: flex-start;
 }
 
 .faq-placeholder {
     text-align: center;
-    color: #9ca3af;
+    color: var(--color-text-secondary);
     font-weight: 600;
     font-size: 0.95rem;
     animation: fadeIn 0.5s ease-in-out;
@@ -69,20 +74,7 @@ ol.space-y-4 li {
     margin-bottom: 0;
 }
 
-/* Animation */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-/* Chat bubble specific pop animation */
-.bubble-pop {
-    opacity: 0;
-    transform: scale(0.9) translateY(10px);
-    animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
+/* Animations */
 @keyframes bubblePop {
     from {
         opacity: 0;
@@ -92,14 +84,6 @@ ol.space-y-4 li {
         opacity: 1;
         transform: scale(1) translateY(0);
     }
-}
-
-/* Typing cursor effect (optional) */
-.typing::after {
-    content: '|';
-    animation: blink 0.7s infinite;
-    margin-left: 2px;
-    color: currentColor;
 }
 
 @keyframes blink {
@@ -118,6 +102,26 @@ ol.space-y-4 li {
     }
 }
 
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.bubble-pop {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+    animation: bubblePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.typing::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+    color: currentColor;
+}
+
+/* Chat Bubble */
 .chat-bubble {
     padding: 14px 18px;
     font-size: 0.95rem;
@@ -126,21 +130,23 @@ ol.space-y-4 li {
     word-break: normal;
     overflow-wrap: break-word;
     white-space: pre-wrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .chat-bubble.question {
-    background-color: white;
-    color: #374151;
-    border-radius: 0 20px 20px 20px;
+    background-color: var(--color-surface);
+    color: var(--color-text-muted);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
     max-width: 85%;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
+    font-family: 'GangwonEducationModuche', sans-serif;
+    font-weight: 700;
 }
 
 .chat-bubble.answer {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border-radius: 20px 0 20px 20px;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg);
     max-width: 85%;
 }
 
@@ -164,13 +170,13 @@ ol.space-y-4 li {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #e5e7eb;
-    background-color: white;
+    border: 2px solid var(--color-border);
+    background-color: var(--color-surface);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    overflow: hidden; /* For images */
+    overflow: hidden;
     font-size: 1.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
