@@ -120,7 +120,6 @@ function AppContent() {
                 />
                 <ChapterDescSection
                   chapter={chapter}
-                  chapterIndex={idx}
                   reportContent={reportContent}
                   staticData={staticData}
                   petName={petName}

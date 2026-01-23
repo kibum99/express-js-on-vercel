@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { FAQ, Chapter } from '../../types';
+import type { Chapter } from '../../types';
 import { interpolateTemplate, wrapSpecialCharacters } from '../../utils/template';
 
 interface FaqChatProps {

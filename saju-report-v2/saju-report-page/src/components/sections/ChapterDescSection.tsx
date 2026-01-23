@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeUp, viewportOnce } from '../../animations/variants';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
@@ -9,7 +8,6 @@ import type { Chapter, ReportContent, StaticContent } from '../../types';
 
 interface ChapterDescSectionProps {
   chapter: Chapter;
-  chapterIndex: number;
   reportContent: ReportContent | undefined;
   staticData: StaticContent;
   petName: string;
@@ -19,7 +17,6 @@ interface ChapterDescSectionProps {
 
 export function ChapterDescSection({
   chapter,
-  chapterIndex,
   reportContent,
   staticData,
   petName,
@@ -27,12 +24,10 @@ export function ChapterDescSection({
   onShowContent,
 }: ChapterDescSectionProps) {
   const prefersReducedMotion = useReducedMotion();
-  const [showContent, setShowContent] = useState(false);
 
   const queries = chapter.desc_queries?.map((q) => q.template) || reportContent?.reportContent?.map((item) => item.question) || [];
 
   const handleFaqEnd = () => {
-    setShowContent(true);
     onShowContent();
   };
 

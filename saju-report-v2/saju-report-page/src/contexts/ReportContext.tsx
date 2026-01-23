@@ -1,4 +1,4 @@
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 import type { ReportData, StaticContent } from '../types';
 import { useReportData } from '../hooks/useReportData';
 import { staticContent } from '../content/staticContent';

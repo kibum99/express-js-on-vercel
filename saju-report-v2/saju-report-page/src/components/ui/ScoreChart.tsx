@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { wrapSpecialCharacters } from '../../utils/template';
 
 interface ScoreChartProps {
@@ -51,8 +50,6 @@ export function ScoreChart({ score, hintTemplate, className = '' }: ScoreChartPr
       const easedProgress = 1 - Math.pow(1 - progress, 3);
       const currentScore = -10 + (score + 10) * easedProgress;
       const currentZ = zScore(currentScore);
-      const pdfValue = pdf(currentZ);
-      const yPercent = ((40 - (pdfValue * yScale)) / 40) * 100;
 
       setDisplayScore(Math.max(0, Math.round(currentScore)));
 
