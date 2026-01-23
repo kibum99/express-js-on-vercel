@@ -1,52 +1,95 @@
-/* Color Variables */
+/* Design System - Unified Tokens */
 :root {
+    /* ============================================
+       Typography Scale (rem-based)
+       ============================================ */
+    --text-xs: 0.75rem;      /* 12px - 캡션, 보조 텍스트 */
+    --text-sm: 0.875rem;     /* 14px - 레이블, 작은 본문 */
+    --text-base: 1rem;       /* 16px - 기본 본문 */
+    --text-lg: 1.125rem;     /* 18px - 강조 본문 */
+    --text-xl: 1.25rem;      /* 20px - 소제목 */
+    --text-2xl: 1.5rem;      /* 24px - 제목 */
+    --text-3xl: 2rem;        /* 32px - 대제목/디스플레이 */
+    --text-4xl: 2.5rem;      /* 40px - 초대형 제목 */
+
+    /* Line Height */
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.8;
+
+    /* Font Weight */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-black: 900;
+
+    /* ============================================
+       Spacing Scale (8px-based, rem)
+       ============================================ */
+    --space-1: 0.25rem;      /* 4px */
+    --space-2: 0.5rem;       /* 8px */
+    --space-3: 0.75rem;      /* 12px */
+    --space-4: 1rem;         /* 16px */
+    --space-5: 1.25rem;      /* 20px */
+    --space-6: 1.5rem;       /* 24px */
+    --space-8: 2rem;         /* 32px */
+    --space-10: 2.5rem;      /* 40px */
+    --space-12: 3rem;        /* 48px */
+    --space-16: 4rem;        /* 64px */
+
+    /* ============================================
+       Colors (Simplified)
+       ============================================ */
     /* Primary */
     --color-primary: #ef4444;
     --color-primary-light: #fee2e2;
     --color-primary-dark: #991b1b;
-    --color-primary-hover: #ff6b6b;
 
-    /* Text */
+    /* Text (단일 색상으로 통일) */
     --color-text: #1a1a1a;
-    --color-text-secondary: #9ca3af;
-    --color-text-muted: #374151;
-    --color-text-light: #555555;
-    --color-text-dark: #333333;
-    --color-text-gray: #999999;
-    --color-text-slate: #1f2937;
+    --color-text-secondary: #1a1a1a;
+    --color-text-light: #1a1a1a;
 
-    /* Background */
-    --color-background: #f3f4f6;
-    --color-background-alt: #f8fafc;
-    --color-background-light: #f9fafb;
+    /* Background (2단계) */
+    --color-bg: #f3f4f6;
     --color-surface: #ffffff;
 
-    /* Border */
+    /* Border (2단계) */
     --color-border: #e5e7eb;
     --color-border-light: #f0f0f0;
-    --color-border-dark: #d1d5db;
-    --color-border-gray: #e0e0e0;
-    --color-border-dashed: #ccc;
 
-    /* Dark Mode (Saju Grid) */
+    /* Dark Mode (Saju Grid 전용) */
     --color-dark-bg: #2c2c2e;
     --color-dark-surface: #48484a;
     --color-dark-text: #ffffff;
     --color-dark-text-muted: #a1a1aa;
-    --color-dark-text-alt: #ebebf5;
 
-    /* Special */
+    /* Special (Saju 전용) */
     --color-saju-blue: #64b5f6;
     --color-saju-red: #ef5350;
 
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 12px 40px -12px rgba(0, 0, 0, 0.12);
+    /* Accent Colors */
+    --color-accent-pink: #f87171;
+    --color-accent-pink-light: #fef2f2;
+    --color-accent-blue: #2563eb;
+    --color-accent-blue-lighter: #eff6ff;
+    --color-accent-blue-light: #dbeafe;
+    --color-accent-rose-dark: #831843;
+    --color-accent-rose: #881337;
 
-    /* Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 24px;
+    /* ============================================
+       Effects
+       ============================================ */
+    /* Shadows */
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 0.75rem 2.5rem -0.75rem rgba(0, 0, 0, 0.12);
+
+    /* Border Radius (rem-based) */
+    --radius-sm: 0.5rem;     /* 8px */
+    --radius-md: 1rem;       /* 16px */
+    --radius-lg: 1.5rem;     /* 24px */
+    --radius-xl: 2rem;       /* 32px */
+    --radius-full: 9999px;
 }

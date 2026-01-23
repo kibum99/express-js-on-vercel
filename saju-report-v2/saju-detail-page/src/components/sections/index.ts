@@ -1,0 +1,10 @@
+export { HeroSection } from './HeroSection';
+export { ProblemSection } from './ProblemSection';
+export { EmpathySection } from './EmpathySection';
+export { SolutionSection } from './SolutionSection';
+export { ValueSection } from './ValueSection';
+export { PreviewSection } from './PreviewSection';
+export { DifferentiationSection } from './DifferentiationSection';
+export { ReviewsSection } from './ReviewsSection';
+export { ReportSection } from './ReportSection';
+export { CtaSection } from './CtaSection';

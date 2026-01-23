@@ -141,7 +141,7 @@ function appendRowHeader(container, h) {
             span.style.color = '#ffffff';
             span.innerHTML = wrapSpecialCharacters(h.text);
         } else if (h.isSub) {
-            span.className = `saju-sub-label ${h.class || ''} font-extrabold`;
+            span.className = `saju-sub-label ${h.class || ''}`;
             span.innerHTML = wrapSpecialCharacters(h.text);
         }
         wrapper.appendChild(span);
@@ -399,7 +399,7 @@ function initFaqChat(idx, staticChapter, petName, petProfileImg, staticData) {
         
         if (isEndBtnActive) {
             const endBtn = document.createElement('button');
-            endBtn.className = 'faq-question-btn border-red-200 text-red-500 font-bold bg-red-50/50';
+            endBtn.className = 'faq-question-btn faq-end-btn';
             endBtn.innerHTML = wrapSpecialCharacters(staticData.chapter_desc.faq_end_btn || "더 궁금한 점이 없어요");
             endBtn.onclick = () => {
                 if (isTyping) return;

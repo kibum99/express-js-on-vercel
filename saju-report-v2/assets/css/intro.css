@@ -1,16 +1,128 @@
 /* Intro */
 
+/* Profile Section */
+.intro-profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: var(--space-8);
+}
+
+.profile-frame {
+    position: relative;
+    width: 15rem;
+    height: 20rem;
+    border-radius: 7.5rem;
+    border: 8px solid var(--color-surface);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.profile-frame-inner {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 1.25rem rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-welcome {
+    margin-top: var(--space-10);
+    text-align: left;
+}
+
+.welcome-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+}
+
+.welcome-message {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-4);
+}
+
+.welcome-paragraph {
+    margin-bottom: 0;
+}
+
+.welcome-paragraph-spaced {
+    margin-top: var(--space-8);
+}
+
+/* Saju Section */
+.saju-section {
+    margin-bottom: var(--space-10);
+}
+
+.saju-header {
+    text-align: left;
+    margin-bottom: var(--space-4);
+}
+
+.saju-title {
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+}
+
+.saju-info {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    margin-top: var(--space-1);
+}
+
+/* Chapters Preview */
+.chapters-preview {
+    margin-bottom: var(--space-12);
+}
+
+.chapters-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+    padding: 0;
+}
+
+.chapters-preview-title {
+    font-weight: var(--font-bold);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+}
+
+.toggle-all-btn {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: var(--color-accent-blue);
+    background-color: var(--color-accent-blue-lighter);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-accent-blue-light);
+    transition: background-color 0.2s;
+}
+
+.toggle-all-btn:hover {
+    background-color: var(--color-accent-blue-light);
+}
+
 /* Saju Grid */
 #pet-saju-grid, #owner-saju-grid {
     display: grid;
-    grid-template-columns: 52px 1fr 1fr 1fr 1fr;
+    grid-template-columns: 3.25rem 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(8, auto);
     width: 100%;
-    gap: 18px 20px;
-    padding: 16px 10px;
+    gap: var(--space-4) var(--space-5);
+    padding: var(--space-4) var(--space-3);
     background-color: var(--color-dark-bg);
     border-radius: var(--radius-lg);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 var(--space-1) var(--space-5) rgba(0, 0, 0, 0.15);
     position: relative;
     color: var(--color-dark-text);
 }
@@ -18,9 +130,9 @@
 #pet-saju-grid::after, #owner-saju-grid::after {
     content: '';
     position: absolute;
-    top: 16px;
-    bottom: 16px;
-    left: 72px;
+    top: var(--space-4);
+    bottom: var(--space-4);
+    left: 4.5rem;
     width: 1px;
     background-color: rgba(255, 255, 255, 0.1);
     pointer-events: none;
@@ -41,21 +153,21 @@
 #pet-saju-grid .saju-row-item:nth-child(5n+1) > span,
 #owner-saju-grid .saju-box-label,
 #owner-saju-grid .saju-row-item:nth-child(5n+1) > span {
-    font-size: 12px !important;
+    font-size: var(--text-xs) !important;
     color: var(--color-dark-text-muted) !important;
-    font-weight: 700 !important;
+    font-weight: var(--font-bold) !important;
     text-align: center !important;
     background-color: transparent !important;
     padding: 0 !important;
     border: none !important;
     white-space: nowrap;
-    line-height: 1.2;
+    line-height: var(--leading-tight);
 }
 
 .saju-column-label {
-    font-size: 14px;
+    font-size: var(--text-sm);
     color: var(--color-dark-text);
-    font-weight: 800;
+    font-weight: var(--font-black);
     text-align: center;
     white-space: nowrap;
 }
@@ -65,14 +177,14 @@
     grid-column: 2 / span 4;
     grid-row: 8;
     width: 100%;
-    min-height: 28px;
+    min-height: 1.75rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 6px 8px;
-    padding: 8px 12px;
-    font-size: 12px;
+    gap: var(--space-2) var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
     color: var(--color-dark-text);
     word-break: keep-all;
     text-align: center;
@@ -80,12 +192,12 @@
 
 .saju-merged-row span {
     background-color: var(--color-dark-surface);
-    color: var(--color-dark-text-alt);
-    padding: 3px 8px;
-    border-radius: 6px;
+    color: var(--color-dark-text);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
     white-space: nowrap;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
 }
 
 /* Saju Grid Items */
@@ -95,7 +207,7 @@
 
 .saju-row-item {
     width: 100%;
-    min-height: 28px;
+    min-height: 1.75rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -122,11 +234,11 @@
     height: 100%;
     object-fit: contain;
     border-radius: var(--radius-md);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 .saju-sub-label {
-    font-size: 15px;
+    font-size: var(--text-base);
     line-height: 1;
     text-align: center;
     display: flex;
@@ -134,7 +246,7 @@
     justify-content: center;
     width: 100%;
     color: var(--color-dark-text);
-    font-weight: 800;
+    font-weight: var(--font-black);
     white-space: nowrap;
 }
 
@@ -147,19 +259,19 @@
 .chapter-toggle-item {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border-light);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     transition: all 0.2s ease-in-out;
 }
 
 .chapter-toggle-item.active {
-    border-color: var(--color-border-gray);
+    border-color: var(--color-border);
     box-shadow: var(--shadow-md);
 }
 
 .toggle-header {
     width: 100%;
-    padding: 14px 18px;
+    padding: var(--space-3) var(--space-4);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -171,27 +283,27 @@
 .toggle-header-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-3);
 }
 
 .toggle-icon {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
     object-fit: contain;
 }
 
 .toggle-title {
-    font-size: 15px;
+    font-size: var(--text-base);
     font-family: 'GangwonEducationModuche', sans-serif;
-    font-weight: 700;
-    color: var(--color-text-dark);
+    font-weight: var(--font-bold);
+    color: var(--color-text);
 }
 
 .toggle-arrow {
-    width: 20px;
-    height: 20px;
+    width: var(--space-5);
+    height: var(--space-5);
     transition: transform 0.3s ease;
-    color: var(--color-text-gray);
+    color: var(--color-text-secondary);
 }
 
 .chapter-toggle-item.active .toggle-arrow {
@@ -206,29 +318,29 @@
 }
 
 .chapter-toggle-item.active .toggle-content {
-    max-height: 500px;
-    padding: 12px 18px 18px 18px;
+    max-height: 31.25rem;
+    padding: var(--space-3) var(--space-4) var(--space-4) var(--space-4);
 }
 
 .query-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2);
 }
 
 .query-item {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    font-size: 13.5px;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
     font-family: 'GangwonEducationModuche', sans-serif;
-    font-weight: 700;
-    color: var(--color-text-light);
-    line-height: 1.5;
+    font-weight: var(--font-bold);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
 }
 
 .query-bullet {
     color: var(--color-primary);
-    font-weight: bold;
-    margin-top: 1px;
+    font-weight: var(--font-bold);
+    margin-top: 0.0625rem;
 }

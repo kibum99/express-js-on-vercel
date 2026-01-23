@@ -11,29 +11,29 @@ function renderMainSection(data, staticData, petName) {
     const petImage = petPersona && petPersona.profile_image ? petPersona.profile_image : 'https://via.placeholder.com/300x300?text=Pet+Image';
 
     container.innerHTML = `
-        <div class="flex flex-col items-center justify-between py-12 px-5 overflow-hidden min-h-screen">
+        <div class="main-container">
             <div class="text-center fade-in">
-                <h1 id="main-title" class="text-2xl font-bold leading-tight text-gray-900">
+                <h1 id="main-title" class="main-title">
                     ${wrapSpecialCharacters(interpolateTemplate(staticData.main.title_template, { petName }))}
                 </h1>
-                <div class="mt-4 flex justify-center">
-                    <div class="w-12 h-1 bg-black rounded-full"></div>
+                <div class="title-divider">
+                    <div class="divider-line"></div>
                 </div>
             </div>
 
-            <div class="flex-1 flex items-center justify-center fade-in delay-200">
-                <div id="pet-image-container" class="relative">
-                    <img id="pet-image" src="${petImage}" alt="Pet" class="w-64 h-64 object-cover rounded-full shadow-lg border-4 border-white">
-                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center text-2xl">🔍</div>
+            <div class="main-image-wrapper fade-in delay-200">
+                <div id="pet-image-container" class="pet-image-container">
+                    <img id="pet-image" src="${petImage}" alt="Pet" class="pet-image">
+                    <div class="pet-image-badge">🔍</div>
                 </div>
             </div>
 
-            <div class="w-full text-center pb-8">
-                <div id="start-report-btn" class="animate-bounce cursor-pointer flex flex-col items-center">
-                    <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="main-scroll-section">
+                <div id="start-report-btn" class="start-btn">
+                    <svg class="scroll-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
                     </svg>
-                    <p class="scroll-hint text-xs font-bold text-red-500 mt-2 uppercase tracking-widest">
+                    <p class="scroll-hint">
                         ${staticData.main.scroll_hint.replace('<br>', ' ')}
                     </p>
                 </div>
@@ -54,48 +54,48 @@ function renderIntroSection(data, staticData, petName, ownerName, petPersona, ow
     
     container.innerHTML = `
         <div class="safe-area">
-            <div class="flex flex-col items-center mt-8">
-                <div class="relative w-60 h-80 rounded-[120px] border-8 border-white shadow-2xl overflow-hidden">
-                    <div class="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.2)] z-10 pointer-events-none"></div>
-                    <img id="pet-profile" src="${staticData.intro.intro_profile || (petPersona && petPersona.profile_image) || 'https://via.placeholder.com/80x80'}" alt="Pet" class="w-full h-full object-cover">
+            <div class="intro-profile-section">
+                <div class="profile-frame">
+                    <div class="profile-frame-inner"></div>
+                    <img id="pet-profile" src="${staticData.intro.intro_profile || (petPersona && petPersona.profile_image) || 'https://via.placeholder.com/80x80'}" alt="Pet" class="profile-image">
                 </div>
-                <div class="mt-10 text-center">
-                    <p id="welcome-title" class="text-xl font-bold"><span class="highlight">${wrapSpecialCharacters(staticData.intro.welcome_title)}</span></p>
-                    <div id="welcome-msg" class="text-sm text-gray-600 mt-4">
+                <div class="intro-welcome">
+                    <p id="welcome-title" class="welcome-title"><span class="highlight">${wrapSpecialCharacters(staticData.intro.welcome_title)}</span></p>
+                    <div id="welcome-msg" class="welcome-message">
                         ${interpolateTemplate(staticData.intro.welcome_msg_template, { petName, ownerName })
                             .split('\n\n')
-                            .map((p, i) => `<p class="${i > 0 ? 'mt-8' : ''}">${wrapSpecialCharacters(p).replace(/\n/g, '<br>')}</p>`)
+                            .map((p, i) => `<p class="${i > 0 ? 'welcome-paragraph-spaced' : 'welcome-paragraph'}">${wrapSpecialCharacters(p).replace(/\n/g, '<br>')}</p>`)
                             .join('')}
                     </div>
                 </div>
             </div>
 
-            <hr class="my-8 border-gray-100">
+            <div class="divider"></div>
 
-            <div class="mb-10">
-                <div class="text-center mb-4">
-                    <h3 id="pet-saju-title" class="font-bold text-lg text-gray-900">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.pet_saju_title_template, { petName }))}</h3>
-                    <p id="pet-persona-info" class="text-[11px] text-gray-400 mt-1">${formatPersonaInfo(petPersona)}</p>
+            <div class="saju-section">
+                <div class="saju-header">
+                    <h3 id="pet-saju-title" class="saju-title">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.pet_saju_title_template, { petName }))}</h3>
+                    <p id="pet-persona-info" class="saju-info">${formatPersonaInfo(petPersona)}</p>
                 </div>
-                <div id="pet-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl"></div>
+                <div id="pet-saju-grid"></div>
             </div>
 
-            <div class="mb-10">
-                <div class="text-center mb-4">
-                    <h3 id="owner-saju-title" class="font-bold text-lg text-gray-900">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.owner_saju_title_template, { ownerName }))}</h3>
-                    <p id="owner-persona-info" class="text-[11px] text-gray-400 mt-1">${formatPersonaInfo(ownerPersona)}</p>
+            <div class="saju-section">
+                <div class="saju-header">
+                    <h3 id="owner-saju-title" class="saju-title">${wrapSpecialCharacters(interpolateTemplate(staticData.intro.owner_saju_title_template, { ownerName }))}</h3>
+                    <p id="owner-persona-info" class="saju-info">${formatPersonaInfo(ownerPersona)}</p>
                 </div>
-                <div id="owner-saju-grid" class="grid grid-cols-5 gap-1 p-2 rounded-xl"></div>
+                <div id="owner-saju-grid"></div>
             </div>
 
-            <div class="mb-12">
-                <div class="flex justify-between items-center mb-4 px-0">
-                    <h3 class="font-bold text-lg text-gray-800">리포트에서 확인 가능한 내용</h3>
-                    <button id="toggle-all-btn" class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100 hover:bg-blue-100 transition-colors">
+            <div class="chapters-preview">
+                <div class="chapters-preview-header">
+                    <h3 class="chapters-preview-title">리포트에서 확인 가능한 내용</h3>
+                    <button id="toggle-all-btn" class="toggle-all-btn">
                         모두 접기
                     </button>
                 </div>
-                <div id="chapter-toggles" class="space-y-3"></div>
+                <div id="chapter-toggles" class="space-y-4"></div>
             </div>
         </div>
     `;
@@ -116,24 +116,24 @@ function renderChapterStartSection(idx, data, staticData, petName, container) {
     const staticChapter = staticData.chapters[idx];
     
     container.innerHTML = `
-        <div class="flex flex-col min-h-screen">
-            <div class="flex-1 flex flex-col items-center justify-center px-5 py-12 text-center relative overflow-hidden bg-white">
-                <div class="absolute inset-0 pointer-events-none z-0">
+        <div class="chapter-start-wrapper">
+            <div class="chapter-start-content">
+                <div class="chapter-start-orbs">
                     <div class="bg-orb orb-1"></div>
                     <div class="bg-orb orb-2"></div>
                     <div class="bg-orb orb-3"></div>
                 </div>
-                <div class="fade-in flex flex-col items-center relative z-10 space-y-20">
-                    <div id="chapter-title-container" class="flex flex-col items-center relative z-10">
-                        <span class="text-lg font-bold text-red-400 mb-4 uppercase tracking-[0.3em] reveal-text">Chapter. ${idx + 1}</span>
-                        <span class="text-5xl font-black text-gray-900 reveal-text" style="animation-delay: 0.1s;">${wrapSpecialCharacters(staticChapter.title)}</span>
+                <div class="chapter-start-inner">
+                    <div id="chapter-title-container" class="chapter-title-section">
+                        <span class="chapter-number reveal-text">Chapter. ${idx + 1}</span>
+                        <span class="chapter-title reveal-text" style="animation-delay: 0.1s;">${wrapSpecialCharacters(staticChapter.title)}</span>
                     </div>
-                    <div class="relative z-10 reveal-text" style="animation-delay: 0.3s;">
-                        <div class="w-56 h-56 rounded-full bg-white shadow-2xl flex items-center justify-center overflow-hidden border-8 border-red-50">
-                            <img src="${staticChapter.icon}" alt="Chapter Icon" class="w-full h-full object-cover">
+                    <div class="chapter-icon-wrapper reveal-text" style="animation-delay: 0.3s;">
+                        <div class="chapter-icon-frame">
+                            <img src="${staticChapter.icon}" alt="Chapter Icon" class="chapter-icon">
                         </div>
                     </div>
-                    <p class="text-3xl font-bold leading-relaxed text-gray-800 z-10 reveal-text px-4" style="animation-delay: 0.5s;">
+                    <p class="chapter-question reveal-text" style="animation-delay: 0.5s;">
                         ${wrapSpecialCharacters(interpolateTemplate(staticChapter.questionTemplate, { petName }))}
                     </p>
                 </div>
@@ -156,61 +156,61 @@ function renderChapterDescSection(idx, data, staticData, petName, petProfileImg,
     const queries = report.reportContent.map(item => item.question);
 
     container.innerHTML = `
-        <div class="flex flex-col bg-gray-50/30">
-            <div class="hero-section flex flex-col items-center pt-12 pb-14 px-5 bg-white border-b border-gray-50">
-                <div class="relative mb-8">
-                    <img src="${staticChapter.teller_icon}" alt="Teller" class="w-40 h-40 rounded-full border-4 border-white shadow-xl bg-gray-50">
+        <div class="chapter-desc-wrapper">
+            <div class="chapter-desc-hero">
+                <div class="teller-avatar-wrapper">
+                    <img src="${staticChapter.teller_icon}" alt="Teller" class="teller-avatar">
                 </div>
-                <h3 class="text-2xl font-black text-center leading-tight">
-                    이번 챕터는<br><span class="text-red-500">${wrapSpecialCharacters(staticChapter.title)}</span> 이에요
+                <h3 class="chapter-desc-title">
+                    이번 챕터는<br><span class="chapter-desc-highlight">${wrapSpecialCharacters(staticChapter.title)}</span> 이에요
                 </h3>
             </div>
-            <div class="px-5 -mt-6">
-                <div class="bg-white rounded-3xl p-5 shadow-xl shadow-gray-200/50 border border-gray-50 relative z-10">
-                    <p class="text-gray-600 text-center leading-relaxed font-medium text-sm">
+            <div class="chapter-overview-section">
+                <div class="chapter-overview-card">
+                    <p class="chapter-overview-text">
                         ${wrapSpecialCharacters(interpolateTemplate(staticChapter.chapter_overview, { petName }))}
                     </p>
                 </div>
             </div>
-            <div class="mt-10 px-5">
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+            <div class="chapter-queries-section">
+                <div class="queries-card">
                     <ol class="space-y-4">
                         ${queries.map((qText, qIdx) => `
-                            <li class="text-lg font-bold flex items-start">
+                            <li class="query-list-item">
                                 <span class="query-number">${qIdx + 1}.</span>
                                 <span>${wrapSpecialCharacters(interpolateTemplate(qText, { petName }))}</span>
                             </li>
                         `).join('')}
                     </ol>
-                    <p class="mt-6 font-bold text-gray-700">${wrapSpecialCharacters(staticData.chapter_desc.keywords_suffix)}</p>
+                    <p class="keywords-suffix">${wrapSpecialCharacters(staticData.chapter_desc.keywords_suffix)}</p>
                 </div>
             </div>
-            <div class="mt-10 px-5">
-                <h4 class="text-xl font-black text-gray-900 mb-6 flex items-center">
-                    <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3"></span>
+            <div class="chapter-analysis-section">
+                <h4 class="section-title-with-icon">
+                    <span class="title-icon"></span>
                     ${wrapSpecialCharacters(staticData.chapter_desc.analysis_title)}
                 </h4>
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                    <ul class="space-y-4">
+                <div class="analysis-card">
+                    <ul id="analysis-list" class="space-y-4">
                         ${staticChapter.analysis_elements.map(el => `
-                            <li class="flex items-start font-medium text-gray-600 text-sm">
+                            <li>
                                 <span>${wrapSpecialCharacters(interpolateTemplate(el, { petName }))}</span>
                             </li>
                         `).join('')}
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 mb-12">
-                <h4 class="px-5 text-xl font-black text-gray-900 mb-6 flex items-start">
-                    <span class="w-1.5 h-6 bg-red-500 rounded-full mr-3 mt-1 shrink-0"></span>
-                    <span class="flex-1">${wrapSpecialCharacters(interpolateTemplate(staticData.chapter_desc.faq_title, { petName }))}</span>
+            <div class="chapter-faq-section">
+                <h4 class="section-title-with-icon-flexible">
+                    <span class="title-icon-flexible"></span>
+                    <span class="section-title-text">${wrapSpecialCharacters(interpolateTemplate(staticData.chapter_desc.faq_title, { petName }))}</span>
                 </h4>
-                <div class="px-5">
+                <div class="faq-content-wrapper">
                     <div id="faq-chat-container-${idx}" class="faq-chat-container space-y-6"></div>
-                    <div id="faq-options-${idx}" class="mt-8 space-y-3 px-0"></div>
+                    <div id="faq-options-${idx}" class="faq-options"></div>
                 </div>
             </div>
-            <div id="common-scroll-footer-${idx}" class="px-5 pb-12"></div>
+            <div id="common-scroll-footer-${idx}" class="scroll-footer"></div>
         </div>
     `;
     initFaqChat(idx, staticChapter, petName, petProfileImg, staticData);
@@ -227,41 +227,40 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
     const pageStatic = staticData.chapter_content;
     
     container.innerHTML = `
-        <div class="flex flex-col">
-            <div class="px-5 pb-12 bg-white">
-                <div class="mt-8 glass-card rounded-3xl px-5 py-6 mb-8">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-bold text-gray-800">${wrapSpecialCharacters(pageStatic.score_label)}</h4>
-                        <span id="chapter-score-${idx}" class="text-3xl font-black text-red-500">0점</span>
+        <div class="chapter-content-wrapper">
+            <div class="chapter-content-inner">
+                <div class="score-card glass-card rounded-xl">
+                    <div class="score-card-header">
+                        <h4 class="score-label">${wrapSpecialCharacters(pageStatic.score_label)}</h4>
+                        <span id="chapter-score-${idx}" class="score-value">0점</span>
                     </div>
-                    <div class="relative h-32 mt-4 mb-2">
-                        <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="w-full h-full overflow-visible">
+                    <div class="score-chart-wrapper">
+                        <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="score-chart">
                             <path id="bell-curve-bg-${idx}" d="" fill="rgba(0,0,0,0.03)" />
                             <path id="bell-curve-highlight-${idx}" d="" fill="#EF4444" fill-opacity="0.3" />
                             <line x1="0" y1="40" x2="100" y2="40" stroke="#E5E7EB" stroke-width="1" />
                         </svg>
-                        <div id="score-pointer-${idx}" class="absolute w-0.5 bg-red-500 z-10 origin-bottom" style="left: 0%; top: 40px; height: 0%; transform: translateX(-50%);">
-                            <div class="absolute -top-1.5 -left-1.5 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white shadow-sm"></div>
+                        <div id="score-pointer-${idx}" class="score-pointer" style="left: 0%; top: 40px; height: 0%; transform: translateX(-50%);">
+                            <div class="score-dot"></div>
                         </div>
                     </div>
-                    <p id="score-avg-hint-${idx}" class="text-center text-sm font-bold text-gray-800 mt-4">${wrapSpecialCharacters(pageStatic.score_avg_hint).replace('${percentage}', '...')}</p>
+                    <p id="score-avg-hint-${idx}" class="score-hint">${wrapSpecialCharacters(pageStatic.score_avg_hint).replace('${percentage}', '...')}</p>
                 </div>
-                <div class="mb-6">
-                    <h4 class="font-black text-xl text-gray-900 mb-6">${wrapSpecialCharacters(pageStatic.detailed_report_title)}</h4>
-                    <div id="report-sections-container-${idx}" class="glass-card-gray rounded-3xl px-5 py-10 space-y-24">
+                <div class="detailed-report-section">
+                    <h4 class="detailed-report-title">${wrapSpecialCharacters(pageStatic.detailed_report_title)}</h4>
+                    <div id="report-sections-container-${idx}" class="report-content glass-card-gray rounded-xl">
                         ${report.reportContent.map((item, qIdx) => {
-                            // v2 형식: question/explanation 필드 사용
                             const queryText = item.question;
                             const contentText = item.explanation;
                             const paragraphs = contentText.split('\n').filter(p => p.trim() !== '');
                             
                             return `
-                                <div class="sub-query-item">
-                                    <h5 class="text-lg font-bold text-gray-800 mb-4 flex items-start">
-                                        <span class="text-red-500 mr-2 flex-shrink-0">Q${qIdx + 1}.</span>
-                                        <span class="flex-1">${wrapSpecialCharacters(interpolateTemplate(queryText, { petName }))}</span>
+                                <div class="report-query-item">
+                                    <h5 class="report-query-title">
+                                        <span class="report-query-number">Q${qIdx + 1}.</span>
+                                        <span class="report-query-text">${wrapSpecialCharacters(interpolateTemplate(queryText, { petName }))}</span>
                                     </h5>
-                                    <div class="text-gray-600 leading-relaxed font-medium content-paragraph">
+                                    <div class="content-paragraph">
                                         ${paragraphs.map(p => `<p>${wrapSpecialCharacters(interpolateTemplate(p, { petName }))}</p>`).join('')}
                                     </div>
                                 </div>
@@ -269,12 +268,12 @@ function renderChapterContentSection(idx, data, staticData, petName, container) 
                         }).join('')}
                     </div>
                 </div>
-                <div class="glass-card-pink rounded-3xl px-5 py-6 mb-12 mt-12">
-                    <div class="flex items-center mb-4">
-                        <span class="text-3xl mr-3">${report.lucky_tip.icon}</span>
-                        <h4 class="font-bold text-pink-800 text-lg">${wrapSpecialCharacters(pageStatic.lucky_tip_title)}</h4>
+                <div class="lucky-tip glass-card-pink rounded-xl">
+                    <div class="lucky-tip-header">
+                        <span class="lucky-tip-icon">${report.lucky_tip.icon}</span>
+                        <h4 class="lucky-tip-title">${wrapSpecialCharacters(pageStatic.lucky_tip_title)}</h4>
                     </div>
-                    <p class="text-pink-900 leading-relaxed font-medium">${wrapSpecialCharacters(report.lucky_tip.text)}</p>
+                    <p class="lucky-tip-text">${wrapSpecialCharacters(report.lucky_tip.text)}</p>
                 </div>
             </div>
         </div>
