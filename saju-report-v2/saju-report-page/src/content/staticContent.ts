@@ -2,14 +2,16 @@ import type { StaticContent } from '../types';
 
 export const staticContent: StaticContent = {
   main: {
-    title_template: "${petName}의 사주운명<br>구석구석 살펴보기",
+    title_template: "<highlight>${petName}의 사주운명</highlight><br><highlight>구석구석 살펴보기</highlight>",
     scroll_hint: "사주운명 결과 보기"
   },
   intro: {
     welcome_title: "안녕하세요 멍도사예요",
     welcome_msg_template: "${petName}와 ${ownerName}의 사주를 분석했어요.\n두 분의 타고난 기운이 서로에게 어떤 영향을 주는지,\n그리고 함께할 때 어떤 시너지가 발생하는지 궁금하지 않으신가요?\n\n이번 리포트에서는 ${petName}의 타고난 성품부터\n두 분의 특별한 인연까지\n아주 깊이 있게 다루어 보았어요.\n서로를 더 깊이 이해하고 아껴주는\n소중한 시간이 되시길 바래요.\n\n지금부터 두 분만을 위한\n신비로운 사주 이야기를 시작할게요~",
-  pet_saju_title_template: "먼저 우리 <highlight>${petName}</highlight>의 만세력은...",
+    pet_saju_title_template: "먼저 우리 <highlight>${petName}</highlight>의 만세력은...",
     owner_saju_title_template: "다음으로 <highlight>${ownerName}</highlight>님의 만세력은...",
+    pet_ohaeng_chart_title_template: "<highlight>${petName}</highlight>의 오행 분포는...",
+    owner_ohaeng_chart_title_template: "<highlight>${ownerName}</highlight>님의 오행 분포는...",
     intro_profile: "./assets/img/char/intro.png",
     next_btn: "이제 시작해볼까요?"
   },

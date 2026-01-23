@@ -4,6 +4,7 @@ import { fadeUp, viewportOnce } from '../../animations/variants';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { interpolateTemplate, wrapSpecialCharacters } from '../../utils/template';
 import { SajuGrid } from '../ui/SajuGrid';
+import { OhaengChart } from '../ui/OhaengChart';
 import { Card } from '../ui/Card';
 import type { StaticContent, ReportData, Persona } from '../../types';
 
@@ -100,20 +101,37 @@ export function IntroSection({ staticData, reportData, petName, ownerName }: Int
           whileInView="visible"
           viewport={viewportOnce}
           variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
-          className="space-y-4"
+          className="flex flex-col gap-6"
         >
-          <div>
-            <h3
-              className="text-xl font-heading font-bold mb-2"
-              dangerouslySetInnerHTML={{
-                __html: wrapSpecialCharacters(
-                  interpolateTemplate(staticData.intro.pet_saju_title_template, { petName })
-                ),
-              }}
-            />
-            <p className="text-sm text-muted">{formatPersonaInfo(petPersona)}</p>
+          <div className="flex flex-col gap-3">
+            <div>
+              <h3
+                className="text-xl font-heading font-bold mb-2"
+                dangerouslySetInnerHTML={{
+                  __html: wrapSpecialCharacters(
+                    interpolateTemplate(staticData.intro.pet_saju_title_template, { petName })
+                  ),
+                }}
+              />
+              <p className="text-sm text-muted">{formatPersonaInfo(petPersona)}</p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <SajuGrid saju={petSaju} />
+            </div>
           </div>
-          <SajuGrid saju={petSaju} />
+          {petSaju && (
+            <div className="flex flex-col gap-3">
+              <h3
+                className="text-xl font-heading font-bold w-full"
+                dangerouslySetInnerHTML={{
+                  __html: wrapSpecialCharacters(
+                    interpolateTemplate(staticData.intro.pet_ohaeng_chart_title_template, { petName })
+                  ),
+                }}
+              />
+              <OhaengChart saju={petSaju} />
+            </div>
+          )}
         </motion.div>
 
         {/* Owner Saju Grid */}
@@ -135,7 +153,22 @@ export function IntroSection({ staticData, reportData, petName, ownerName }: Int
             />
             <p className="text-sm text-muted">{formatPersonaInfo(ownerPersona)}</p>
           </div>
-          <SajuGrid saju={ownerSaju} />
+          <div className="flex flex-col gap-4">
+            <SajuGrid saju={ownerSaju} />
+            {ownerSaju && (
+              <>
+                <h3
+                  className="text-xl font-heading font-bold w-full"
+                  dangerouslySetInnerHTML={{
+                    __html: wrapSpecialCharacters(
+                      interpolateTemplate(staticData.intro.owner_ohaeng_chart_title_template, { ownerName })
+                    ),
+                  }}
+                />
+                <OhaengChart saju={ownerSaju} />
+              </>
+            )}
+          </div>
         </motion.div>
 
         {/* Chapters Preview */}

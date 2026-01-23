@@ -97,14 +97,19 @@ export function ChapterContentSection({
 
         {/* Lucky Tip */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
+          animate={prefersReducedMotion ? {} : {
+            scale: [1, 1.02, 1],
+          }}
+          transition={prefersReducedMotion ? {} : {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
         >
           <Card 
             variant="elevated" 
             className="bg-gradient-to-br from-accent-light via-accent-light/95 to-accent-light/90 border-2 border-accent/50 shadow-lg"
+            animate={false}
           >
             <div className="flex items-start gap-4 p-6">
               <span className="text-4xl flex-shrink-0">{reportContent.lucky_tip.icon}</span>

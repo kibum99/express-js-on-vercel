@@ -10,6 +10,8 @@ export interface IntroContent {
   welcome_msg_template: string;
   pet_saju_title_template: string;
   owner_saju_title_template: string;
+  pet_ohaeng_chart_title_template: string;
+  owner_ohaeng_chart_title_template: string;
   intro_profile: string;
   next_btn: string;
 }

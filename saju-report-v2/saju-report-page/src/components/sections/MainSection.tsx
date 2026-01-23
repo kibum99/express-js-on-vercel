@@ -36,7 +36,6 @@ export function MainSection({ staticData, reportData, petName, onStart }: MainSe
             className="font-heading text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6"
             dangerouslySetInnerHTML={{ __html: wrapSpecialCharacters(titleHtml) }}
           />
-          <div className="w-24 h-0.5 bg-accent mx-auto"></div>
         </motion.div>
 
         {/* Pet Image */}
