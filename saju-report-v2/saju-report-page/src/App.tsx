@@ -125,13 +125,6 @@ function AppContent() {
           })}
         </div>
       )}
-
-      {/* Footer */}
-      {showChapters && (
-        <footer className="px-6 py-16 text-center bg-background border-t border-border/50">
-          <p className="text-sm text-muted">© 2026 사주 리포트. All rights reserved.</p>
-        </footer>
-      )}
     </div>
   );
 }
