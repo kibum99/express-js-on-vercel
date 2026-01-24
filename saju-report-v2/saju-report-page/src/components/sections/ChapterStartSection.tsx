@@ -14,7 +14,7 @@ export function ChapterStartSection({ chapter, chapterIndex, petName }: ChapterS
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-[60vh] flex items-center justify-center px-6 py-20 bg-warm-gradient overflow-hidden">
+    <section className="relative chapter-start-border flex items-center justify-center px-6 py-20 bg-warm-gradient">
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
@@ -27,34 +27,32 @@ export function ChapterStartSection({ chapter, chapterIndex, petName }: ChapterS
         whileInView="visible"
         viewport={viewportOnce}
         variants={prefersReducedMotion ? { hidden: {}, visible: {} } : staggerContainerSlow}
-        className="relative z-10 text-center"
+        className="relative z-10 text-center w-full flex flex-col gap-12"
       >
         <motion.div
           variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
-          className="mb-6"
+          className="flex flex-col items-center justify-center gap-3"
         >
-          <span className="text-xl font-heading font-bold text-accent">Chapter. {chapterIndex + 1}</span>
+          <span className="text-2xl font-heading font-extrabold text-white">Chapter. {chapterIndex + 1}</span>
+          <h2 className="text-5xl md:text-6xl font-heading font-extrabold text-white">
+            {wrapSpecialCharacters(chapter.title)}
+          </h2>
         </motion.div>
-
-        <motion.h2
-          variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
-          className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-8"
-        >
-          {wrapSpecialCharacters(chapter.title)}
-        </motion.h2>
 
         <motion.div
           variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
-          className="mb-8"
         >
-          <div className="w-32 h-32 mx-auto rounded-full bg-white/80 backdrop-blur-sm shadow-lg border-4 border-white flex items-center justify-center overflow-hidden">
-            <img src={chapter.icon.replace('./assets', '/assets')} alt={chapter.title} className="w-28 h-28 object-contain" />
+          <div 
+            className="w-[52vw] h-[52vw] max-w-[196px] max-h-[196px] mx-auto rounded-full bg-white/80 border-4 border-white flex items-center justify-center overflow-hidden"
+            style={{ boxShadow: '0px 0px 64px 0px rgba(0, 0, 0, 1)', backdropFilter: 'none' }}
+          >
+            <img src={chapter.icon.replace('./assets', '/assets')} alt={chapter.title} className="w-[calc(100%-6px)] h-[calc(100%-6px)] object-contain" />
           </div>
         </motion.div>
 
         <motion.p
           variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
-          className="text-lg md:text-xl text-muted leading-relaxed"
+          className="text-lg md:text-xl text-white/90 leading-relaxed"
           dangerouslySetInnerHTML={{
             __html: wrapSpecialCharacters(interpolateTemplate(chapter.questionTemplate, { petName })),
           }}

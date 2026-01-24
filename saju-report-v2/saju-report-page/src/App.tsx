@@ -6,8 +6,8 @@ import { useScrollSpy } from './hooks/useScrollSpy';
 
 function AppContent() {
   const { reportData, staticData, loading, error, petName, ownerName } = useReportContext();
-  const [showIntro, setShowIntro] = useState(false);
-  const [showChapters, setShowChapters] = useState(false);
+  const showIntro = true;
+  const showChapters = true;
   const [visibleContentChapters, setVisibleContentChapters] = useState<Set<number>>(new Set());
 
   const chapterCount = staticData.chapters.length;
@@ -41,19 +41,6 @@ function AppContent() {
     );
   }
 
-  const handleStart = () => {
-    setShowIntro(true);
-    setShowChapters(true);
-    setTimeout(() => {
-      const introSection = document.getElementById('intro-section');
-      if (introSection) {
-        const headerHeight = 60;
-        const targetPosition = introSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    }, 50);
-  };
-
   const handleShowContent = (chapterIndex: number) => {
     setVisibleContentChapters((prev) => new Set(prev).add(chapterIndex));
     setTimeout(() => {
@@ -82,7 +69,6 @@ function AppContent() {
         staticData={staticData}
         reportData={reportData}
         petName={petName}
-        onStart={handleStart}
       />
 
       {/* Intro Section */}

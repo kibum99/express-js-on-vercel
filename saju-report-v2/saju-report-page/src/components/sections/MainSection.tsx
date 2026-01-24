@@ -8,10 +8,9 @@ interface MainSectionProps {
   staticData: StaticContent;
   reportData: ReportData | null;
   petName: string;
-  onStart: () => void;
 }
 
-export function MainSection({ staticData, reportData, petName, onStart }: MainSectionProps) {
+export function MainSection({ staticData, reportData, petName }: MainSectionProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const petPersona = reportData?.persona?.find((p) => p.type === 'pet');
@@ -20,7 +19,10 @@ export function MainSection({ staticData, reportData, petName, onStart }: MainSe
   const titleHtml = interpolateTemplate(staticData.main.title_template, { petName });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 py-12 bg-background">
+    <section 
+      className="relative min-h-screen flex items-center justify-center px-6 py-12 bg-cover bg-center main-section"
+      style={{ backgroundImage: 'url(/assets/img/main-section-background.png)' }}
+    >
       <motion.div
         initial="hidden"
         animate="visible"
@@ -33,7 +35,7 @@ export function MainSection({ staticData, reportData, petName, onStart }: MainSe
           className="mb-8"
         >
           <h1
-            className="font-heading text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6"
+            className="font-heading text-4xl md:text-5xl font-bold text-white leading-tight mb-6"
             dangerouslySetInnerHTML={{ __html: wrapSpecialCharacters(titleHtml) }}
           />
         </motion.div>
@@ -51,23 +53,17 @@ export function MainSection({ staticData, reportData, petName, onStart }: MainSe
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-2xl shadow-md">
-              🔍
-            </div>
           </div>
         </motion.div>
 
-        {/* Start Button */}
+        {/* Scroll Hint */}
         <motion.div
           variants={prefersReducedMotion ? { hidden: {}, visible: {} } : fadeUp}
           className="mt-8 flex flex-col"
         >
-          <button
-            onClick={onStart}
-            className="flex flex-col items-center gap-3 text-accent hover:text-accent-dark transition-colors group"
-          >
+          <div className="flex flex-col items-center gap-3 text-white">
             <svg
-              className="w-8 h-8 animate-bounce group-hover:scale-110 transition-transform"
+              className="w-8 h-8 animate-bounce"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -82,7 +78,7 @@ export function MainSection({ staticData, reportData, petName, onStart }: MainSe
             <p className="text-sm font-medium tracking-wider">
               {staticData.main.scroll_hint.replace('<br>', ' ')}
             </p>
-          </button>
+          </div>
         </motion.div>
       </motion.div>
     </section>

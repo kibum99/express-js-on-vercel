@@ -324,7 +324,7 @@ export const staticContent: StaticContent = {
     analysis_title: "<highlight>이런 사주 요소를 살펴요</highlight>",
     faq_title: "그런데...<br>사람들에게 적용되는 사주분석이<br>우리 ${petName}에게 보면서,<br><highlight>이런게 궁금하지는 않으셨나요?</highlight>",
     intro_title: "<highlight>이번 챕터에서는...</highlight>",
-    faq_end_btn: "더 궁금한 점이 없어요.\n이제 분석 내용을 보여주세요.",
+    faq_end_btn: "더 궁금한 점이 없어요.\n상세 분석 내용 보기 →",
     footer_msg: "자 그럼 이제 보러 가볼까요?",
     scroll_hint: "분석 리포트 보러가기"
   },

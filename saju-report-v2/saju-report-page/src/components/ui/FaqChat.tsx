@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import type { Chapter } from '../../types';
+import type { Chapter, StaticContent } from '../../types';
 import { interpolateTemplate, wrapSpecialCharacters } from '../../utils/template';
 
 interface FaqChatProps {
   chapter: Chapter;
   petName: string;
   petProfileImg: string;
+  staticData: StaticContent;
   onEnd: () => void;
 }
 
@@ -17,7 +18,7 @@ interface ChatMessage {
   isAnswered?: boolean;
 }
 
-export function FaqChat({ chapter, petName, petProfileImg, onEnd }: FaqChatProps) {
+export function FaqChat({ chapter, petName, petProfileImg, staticData, onEnd }: FaqChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
     return (chapter.faqs || []).map((faq, idx) => ({
       id: `faq-${idx}`,
@@ -96,34 +97,34 @@ export function FaqChat({ chapter, petName, petProfileImg, onEnd }: FaqChatProps
                     dangerouslySetInnerHTML={{ __html: msg.text }}
                   />
                 </div>
-                {!msg.isAnswered && (
-                  <button
-                    onClick={() => handleFaqClick(msg.id)}
-                    disabled={!!isTyping}
-                    className="flex items-center gap-1 text-xs font-bold text-accent hover:text-accent/80 transition-colors disabled:opacity-50"
-                  >
-                    질문하고 답변보기 →
-                  </button>
-                )}
               </div>
             </div>
 
             {/* Answer */}
-            {(msg.isAnswered || isTyping === msg.id) && (
-              <div className="flex items-start gap-3 flex-row">
-                <img
-                  src={chapter.teller_icon.replace('./assets', '/assets')}
-                  alt="Teller"
-                  className="w-10 h-10 rounded-full flex-shrink-0"
-                />
-                <div className="rounded-2xl px-4 py-3 max-w-[80%] bg-accent-light text-foreground">
+            <div className="flex items-start gap-3 flex-row">
+              <img
+                src={chapter.teller_icon.replace('./assets', '/assets')}
+                alt="Teller"
+                className="w-10 h-10 rounded-full flex-shrink-0"
+              />
+              <div
+                onClick={() => !msg.isAnswered && !isTyping && handleFaqClick(msg.id)}
+                className={`rounded-2xl px-4 py-3 max-w-[80%] bg-accent-light text-foreground ${
+                  !msg.isAnswered && !isTyping ? 'cursor-pointer hover:bg-accent/20 transition-colors' : ''
+                }`}
+              >
+                {msg.isAnswered || isTyping === msg.id ? (
                   <p
                     className="text-sm leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: answers[msg.id] || '' }}
                   />
-                </div>
+                ) : (
+                  <p className="text-sm leading-relaxed text-accent font-bold">
+                    질문하고 답변보기 →
+                  </p>
+                )}
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>
@@ -133,8 +134,16 @@ export function FaqChat({ chapter, petName, petProfileImg, onEnd }: FaqChatProps
           <button
             onClick={handleEndClick}
             disabled={!!isTyping}
-            className="w-full flex flex-col items-center justify-between gap-2 px-4 py-3 bg-accent-light border border-accent/30 rounded-xl text-sm font-bold text-accent transition-all hover:bg-accent/10 disabled:opacity-50 disabled:cursor-not-allowed group"
+            className="w-full flex flex-row items-center justify-between gap-2 px-4 py-3 bg-accent-light border border-accent/30 rounded-xl text-sm font-bold text-accent transition-all hover:bg-accent/10 disabled:opacity-50 disabled:cursor-not-allowed group"
           >
+            <span className="text-left" style={{ lineHeight: '25px' }}>
+              {staticData.chapter_desc.faq_end_btn.split('\n').map((line, idx, arr) => (
+                <span key={idx}>
+                  {wrapSpecialCharacters(line)}
+                  {idx < arr.length - 1 && <br />}
+                </span>
+              ))}
+            </span>
             <svg
               className="w-6 h-6 animate-bounce-low group-hover:scale-110 transition-transform flex-shrink-0"
               fill="none"
@@ -148,7 +157,6 @@ export function FaqChat({ chapter, petName, petProfileImg, onEnd }: FaqChatProps
                 d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
               />
             </svg>
-            <span className="text-left">더 궁금한 점이 없어요. 이제 분석 내용을 보여주세요.</span>
           </button>
         )}
       </div>

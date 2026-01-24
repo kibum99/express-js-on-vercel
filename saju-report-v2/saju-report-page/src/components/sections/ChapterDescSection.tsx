@@ -140,7 +140,7 @@ export function ChapterDescSection({
               ),
             }}
           />
-          <FaqChat chapter={chapter} petName={petName} petProfileImg={petProfileImg} onEnd={handleFaqEnd} />
+          <FaqChat chapter={chapter} petName={petName} petProfileImg={petProfileImg} staticData={staticData} onEnd={handleFaqEnd} />
         </motion.div>
       </div>
     </section>
