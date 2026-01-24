@@ -2,6 +2,17 @@ import type { Saju } from '../../types';
 import { getOhaengColor } from '../../utils/ohaeng';
 import { wrapSpecialCharacters } from '../../utils/template';
 
+// 한글 천간/지지를 영문 파일명으로 매핑
+const cheonganMap: Record<string, string> = {
+  '갑': 'gap', '을': 'eul', '병': 'byeong', '정': 'jeong', '무': 'mu',
+  '기': 'gi', '경': 'gyeong', '신': 'sin', '임': 'im', '계': 'gye'
+};
+
+const jijiMap: Record<string, string> = {
+  '자': 'ja', '축': 'chuk', '인': 'in', '묘': 'myo', '진': 'jin', '사': 'sa',
+  '오': 'o', '미': 'mi', '신': 'sin', '유': 'yu', '술': 'sul', '해': 'hae'
+};
+
 interface SajuGridProps {
   saju: Saju | null;
 }
@@ -33,10 +44,12 @@ export function SajuGrid({ saju }: SajuGridProps) {
       {labels.map((_, i) => {
         const dataIndex = reversedIndex(i);
         const stem = saju.천간[dataIndex];
+        const filename = cheonganMap[stem] || stem;
+        const imagePath = `/assets/img/manse-card/cheongan/${filename}.png`;
         return (
           <div key={i} className="saju-box flex items-center justify-center">
             <img
-              src={`/assets/img/manse-card/천간/${stem}.png`}
+              src={imagePath}
               alt={stem}
               className="w-12 h-12 object-contain rounded"
               style={{ backgroundColor: getOhaengColor(stem) }}
@@ -68,10 +81,12 @@ export function SajuGrid({ saju }: SajuGridProps) {
       {labels.map((_, i) => {
         const dataIndex = reversedIndex(i);
         const branch = saju.지지[dataIndex];
+        const filename = jijiMap[branch] || branch;
+        const imagePath = `/assets/img/manse-card/jiji/${filename}.png`;
         return (
           <div key={i} className="saju-box flex items-center justify-center">
             <img
-              src={`/assets/img/manse-card/지지/${branch}.png`}
+              src={imagePath}
               alt={branch}
               className="w-12 h-12 object-contain rounded"
               style={{ backgroundColor: getOhaengColor(branch) }}
