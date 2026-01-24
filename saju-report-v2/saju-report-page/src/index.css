@@ -288,7 +288,7 @@
   /* Chapter Start Border */
   /* 이미지 비율: 893 x 1600 (약 1:1.79) */
   .chapter-start-border {
-    background-image: url('/assets/img/chapter-start-border-2.png');
+    background-image: url('/assets/img/chapter-start-border.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
